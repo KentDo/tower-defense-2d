@@ -7,36 +7,45 @@ using System;
 public class EnemyController : MonoBehaviour
 {
     [Header("Movement")]
-    public LevelManager path;
+    public LevelManager path;      // Waypoints
     public float speed = 2.5f;
     public float reach = 0.05f;
 
-    int idx;
     Rigidbody2D rb;
     Animator anim;
     SpriteRenderer sr;
 
+    int idx;           // waypoint index
+    int lastDir = 1;   // 0=Down, 1=Side, 2=Up (để death chọn đúng clip)
+    bool isDead;
+
     [Header("Health")]
-    [SerializeField] int maxHP = 10;
+    [SerializeField] int maxHP = 10;                 // HP gốc của prefab
     public int CurrentHP { get; private set; }
     public int MaxHP => maxHP;
+    public Action<int, int> onHealthChanged;          // (optional) UI nghe sự kiện
 
-    public Action<EnemyController> onDeath;
-    public Action<int, int> onHealthChanged;
-
-    [Header("Facing")]
+    [Header("Facing (3 hướng)")]
     public float deadZone = 0.001f;
+    [Range(0f, 1f)] public float axisBias = 0.15f;   // chống giật khi rẽ
+    public bool invertSideFlip = false;              // nếu sprite Side mặc định nhìn trái, bật cái này
+
+    [Header("Death")]
+    public bool useAnimationEvent = true;            // nếu chưa gắn event → đặt false để dùng timer
+    public float deathDuration = 0.6f;               // fallback thời gian clip Death
+
+    public Action<EnemyController> onDeath;          // callback khi destroy xong
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0;
+        rb.gravityScale = 0f;
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
 
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
 
-        CurrentHP = maxHP;
+        CurrentHP = maxHP; // khởi tạo HP
     }
 
     void Start()
@@ -46,68 +55,98 @@ public class EnemyController : MonoBehaviour
             enabled = false;
             return;
         }
+
         transform.position = path.GetPathPoint(0).position;
         idx = 1;
 
-        var dir0 = (Vector2)(path.GetPathPoint(1).position - path.GetPathPoint(0).position);
-        SetFacing(dir0);
+        Vector2 d0 = (Vector2)(path.GetPathPoint(1).position - path.GetPathPoint(0).position);
+        SetFacing(d0);
     }
 
     void FixedUpdate()
     {
+        if (isDead) return;
         if (idx >= path.PathCount) return;
+
         Vector2 target = path.GetPathPoint(idx).position;
-        Vector2 dir = (target - (Vector2)transform.position).normalized;
+        Vector2 toTarget = target - (Vector2)transform.position;
+        Vector2 dir = toTarget.sqrMagnitude > 0.000001f ? toTarget.normalized : Vector2.zero;
 
         SetFacing(dir);
         rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
 
-        if (Vector2.Distance(transform.position, target) <= reach)
+        if (toTarget.magnitude <= reach)
         {
             idx++;
-            if (idx >= path.PathCount)
-            {
-                path.OnEnemyReachEnd(gameObject, 1);
-                return;
-            }
+            if (idx >= path.PathCount) return;
+
             Vector2 nextDir = (Vector2)(path.GetPathPoint(idx).position - path.GetPathPoint(idx - 1).position);
             SetFacing(nextDir);
         }
     }
 
+    // ===== Facing: 0=Down, 1=Side, 2=Up; chỉ lật khi Side =====
     void SetFacing(Vector2 dir)
     {
         if (dir.sqrMagnitude < deadZone) return;
+
+        float ax = Mathf.Abs(dir.x);
+        float ay = Mathf.Abs(dir.y);
+
         int d;
-        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        if (lastDir == 1) d = (ax >= ay + axisBias) ? 1 : (dir.y > 0f ? 2 : 0);
+        else d = (ay >= ax + axisBias) ? (dir.y > 0f ? 2 : 0) : 1;
+
+        if (d == 1)
         {
-            d = 1;
-            sr.flipX = dir.x < 0;
+            bool flip = dir.x < 0f;
+            if (invertSideFlip) flip = !flip;
+            sr.flipX = flip;
         }
-        else
-        {
-            d = (dir.y > 0) ? 2 : 0;
-        }
+        else sr.flipX = false;
+
+        lastDir = d;
         anim.SetInteger("Dir", d);
     }
 
-    // ========= Health =========
+    // ======= HEALTH API =======
+    public void SetMaxHP(int newMax)
+    {
+        maxHP = Mathf.Max(1, newMax);
+        CurrentHP = maxHP;
+        onHealthChanged?.Invoke(CurrentHP, maxHP);
+    }
+
     public void TakeDamage(int dmg)
     {
-        if (dmg <= 0 || CurrentHP <= 0) return;
+        if (isDead || dmg <= 0) return;
         CurrentHP = Mathf.Max(0, CurrentHP - dmg);
         onHealthChanged?.Invoke(CurrentHP, maxHP);
-        if (CurrentHP == 0) Die();
+        if (CurrentHP == 0) Kill();
     }
 
-    public void Heal(int amount)
+    // ======= DEATH =======
+    public void Kill()
     {
-        if (amount <= 0 || CurrentHP <= 0) return;
-        CurrentHP = Mathf.Min(maxHP, CurrentHP + amount);
-        onHealthChanged?.Invoke(CurrentHP, maxHP);
+        if (isDead) return;
+        isDead = true;
+
+        rb.linearVelocity = Vector2.zero;
+
+        anim.SetInteger("Dir", lastDir); // chốt hướng để vào Death_* đúng
+        anim.SetTrigger("Die");
+
+        if (!useAnimationEvent)
+            Invoke(nameof(FinishDeath), Mathf.Max(0.05f, deathDuration));
     }
 
-    void Die()
+    // Gọi từ Animation Event cuối clip Death_D/S/U
+    public void OnDeathAnimEnd()
+    {
+        if (useAnimationEvent) FinishDeath();
+    }
+
+    void FinishDeath()
     {
         onDeath?.Invoke(this);
         Destroy(gameObject);

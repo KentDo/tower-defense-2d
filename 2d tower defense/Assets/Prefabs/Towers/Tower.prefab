@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 4204064696776977495}
   - component: {fileID: -5588745200774284882}
   - component: {fileID: 7762449479343044343}
+  - component: {fileID: 3396701864094482133}
   m_Layer: 3
   m_Name: Tower
   m_TagString: Untagged
@@ -187,6 +188,27 @@ MonoBehaviour:
   - {fileID: 7998958220294591405, guid: 1748435c462570b418d495e101df4303, type: 3}
   weaponOffsets: []
   startLevel: 0
+--- !u!65 &3396701864094482133
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864971164970055308}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5488628350690299873
 GameObject:
   m_ObjectHideFlags: 0

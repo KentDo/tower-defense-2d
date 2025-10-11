@@ -317,5 +317,9 @@ MonoBehaviour:
   path: {fileID: 0}
   speed: 2.5
   reach: 0.05
-  maxHP: 5
+  maxHP: 2
   deadZone: 0.001
+  axisBias: 0.15
+  invertSideFlip: 1
+  useAnimationEvent: 1
+  deathDuration: 0.6
