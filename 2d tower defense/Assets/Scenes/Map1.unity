@@ -10352,6 +10352,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3636286845552182381, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 3636286845552182381, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4965023753190300630, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -10438,6 +10446,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6362584142916950527, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746954020007003236, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
+      propertyPath: m_UiScaleMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
