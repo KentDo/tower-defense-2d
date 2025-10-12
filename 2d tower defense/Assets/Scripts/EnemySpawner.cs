@@ -5,10 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class SpawnEntry
 {
-    public GameObject prefab;     // Prefab quái (có EnemyController)
-    public int count = 5;         // Bao nhiêu con
-    public float startDelay = 0f; // Trễ trước khi bắt đầu dòng spawn này
-    public float interval = 0.6f; // Nhịp giữa 2 con
+    public GameObject prefab;
+    public int count = 5;
+    public float startDelay = 0f;
+    public float interval = 0.6f;
 }
 
 [System.Serializable]
@@ -17,9 +17,7 @@ public class Wave
     public string name = "Wave";
     public SpawnEntry[] entries;
     public float nextWaveDelay = 3f;
-
-    // NEW: hệ số máu của wave (1 = giữ nguyên, 1.5 = +50%)
-    public float hpMultiplier = 1f;
+    public float hpMultiplier = 1f; // 1 = giữ nguyên, 1.5 = +50%
 }
 #endregion
 
@@ -42,14 +40,27 @@ public class EnemySpawner : MonoBehaviour
     public float interval = 1.2f;
     public bool loop = false;
     public float loopDelay = 4f;
-    public bool IsRunning => (currentWaveIndex != -1) || spawningWave || alive > 0;
 
     [Header("Debug")]
-    public int currentWaveIndex = -1;
+    public int currentWaveIndex = -1;  // -1 = idle
     public int alive = 0;
 
+    // ====== State nội bộ ======
     bool spawningWave;
     bool waveFinishedSpawning;
+
+    // ====== Public API / Props / Events ======
+    public bool IsRunning => (currentWaveIndex != -1) || spawningWave || alive > 0;
+    public int TotalWaves => (waves != null) ? waves.Length : 0;
+    public bool CanStartNextWave => waveFinishedSpawning && alive <= 0 && currentWaveIndex >= 0 && currentWaveIndex < TotalWaves - 1;
+
+    /// <summary>Bắn khi vào wave mới: (currentWave, total) — currentWave là 1-based.</summary>
+    public System.Action<int, int> onWaveChanged;
+    /// <summary>Bắn khi kết thúc tất cả waves.</summary>
+    public System.Action onAllWavesFinished;
+
+    // Cờ cho phép UI bỏ qua delay giữa waves khi người chơi bấm Next
+    bool _skipInterWaveDelay = false;
 
     void Start()
     {
@@ -57,41 +68,50 @@ public class EnemySpawner : MonoBehaviour
 
         if (autoStart)
         {
-            if (HasWavesConfigured())
-                StartCoroutine(RunWaves());
-            else
-                StartCoroutine(RunLegacy());
+            if (HasWavesConfigured()) StartCoroutine(RunWaves(0));
+            else StartCoroutine(RunLegacy());
         }
     }
 
     // ========= API =========
     public void StartWavesByButton()
     {
-
+        if (IsRunning) return; // tránh double-start
         StopAllCoroutines();
-        if (HasWavesConfigured()) StartCoroutine(RunWaves());
+        if (HasWavesConfigured()) StartCoroutine(RunWaves(0));
         else StartCoroutine(RunLegacy());
+    }
+
+    /// <summary>Gọi từ UI khi đã clear (alive==0) để bỏ qua delay và vào wave kế.</summary>
+    public bool StartNextWaveNow()
+    {
+        if (!CanStartNextWave) return false;
+        _skipInterWaveDelay = true; // RunWaves sẽ bỏ qua nextWaveDelay cho wave hiện tại
+        return true;
     }
 
     // ========= Core: multi-wave =========
     bool HasWavesConfigured()
     {
         if (waves == null || waves.Length == 0) return false;
-        // có ít nhất 1 entry hợp lệ?
         foreach (var w in waves)
         {
             if (w != null && w.entries != null)
+            {
                 foreach (var e in w.entries)
-                    if (e != null && e.prefab && e.count > 0) return true;
+                    if (e != null && e.prefab && e.count > 0)
+                        return true;
+            }
         }
         return false;
     }
 
-    IEnumerator RunWaves()
+    IEnumerator RunWaves(int startIndex = 0)
     {
         if (!ValidatePath()) yield break;
 
-        for (int w = 0; w < waves.Length; w++)
+        int total = TotalWaves;
+        for (int w = Mathf.Max(0, startIndex); w < total; w++)
         {
             var wave = waves[w];
             if (wave == null) continue;
@@ -100,7 +120,9 @@ public class EnemySpawner : MonoBehaviour
             spawningWave = true;
             waveFinishedSpawning = false;
 
-            // spawn từng entry trong wave (tuần tự)
+            onWaveChanged?.Invoke(w + 1, total);
+
+            // Spawn entries
             if (wave.entries != null)
             {
                 foreach (var e in wave.entries)
@@ -121,14 +143,18 @@ public class EnemySpawner : MonoBehaviour
             spawningWave = false;
             waveFinishedSpawning = true;
 
-            // đợi clear (không còn quái sống)
+            // Chờ clear (alive == 0)
             yield return new WaitUntil(() => alive <= 0);
 
-            if (wave.nextWaveDelay > 0f)
+            // Delay giữa waves — có thể bị skip nếu người chơi bấm Next
+            if (!_skipInterWaveDelay && wave.nextWaveDelay > 0f)
                 yield return new WaitForSeconds(wave.nextWaveDelay);
+
+            _skipInterWaveDelay = false; // reset cho vòng sau
         }
 
         currentWaveIndex = -1;
+        onAllWavesFinished?.Invoke();
         Debug.Log("[Spawner] All waves finished.");
     }
 
@@ -176,8 +202,8 @@ public class EnemySpawner : MonoBehaviour
         {
             ec.path = levelManager;
 
-            // Lấy hệ số của wave hiện tại (nếu hợp lệ)
-            if (currentWaveIndex >= 0 && currentWaveIndex < waves.Length)
+            // Scale máu theo wave hiện tại
+            if (currentWaveIndex >= 0 && currentWaveIndex < TotalWaves)
             {
                 float mul = Mathf.Max(0.01f, waves[currentWaveIndex].hpMultiplier);
                 int scaled = Mathf.RoundToInt(ec.MaxHP * mul);
@@ -185,12 +211,11 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        // relay đếm alive như cũ...
+        // Relay đếm alive
         var relay = go.GetComponent<EnemyLifecycleRelay>() ?? go.AddComponent<EnemyLifecycleRelay>();
         relay.Init(this);
         alive++;
     }
-
 
     Vector3 GetSpawnPos()
     {
@@ -223,7 +248,7 @@ public class EnemySpawner : MonoBehaviour
     }
 #endif
 
-    // ===== Relay (gắn trên enemy) =====
+    // ===== Relay callback =====
     public void NotifyEnemyRemoved(EnemyLifecycleRelay relay)
     {
         if (relay == null || relay._counted) return;
