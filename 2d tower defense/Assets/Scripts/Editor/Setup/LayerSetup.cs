@@ -1,0 +1,55 @@
+using UnityEngine;
+using UnityEditor;
+
+public class LayerSetup : Editor
+{
+    [MenuItem("Tools/Setup/Configure Layers and Physics2D")]
+    public static void SetupLayersAndPhysics()
+    {
+        // Setup layers if they don't exist
+        SerializedObject tagManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
+        SerializedProperty layers = tagManager.FindProperty("layers");
+
+        // Set specific layer indices as per requirements
+        SetLayerIfEmpty(layers, 8, "Path");
+        SetLayerIfEmpty(layers, 9, "Tower");
+        SetLayerIfEmpty(layers, 10, "Enemy");
+        SetLayerIfEmpty(layers, 11, "Obstacle");
+        SetLayerIfEmpty(layers, 12, "Projectile");
+        
+        tagManager.ApplyModifiedProperties();
+
+        // Configure Physics2D Matrix
+        int pathLayer = LayerMask.NameToLayer("Path");
+        int towerLayer = LayerMask.NameToLayer("Tower");
+        int enemyLayer = LayerMask.NameToLayer("Enemy");
+        int obstacleLayer = LayerMask.NameToLayer("Obstacle");
+        int projectileLayer = LayerMask.NameToLayer("Projectile");
+
+        // Reset all collisions first
+        for (int i = 0; i < 32; i++)
+        {
+            Physics2D.IgnoreLayerCollision(i, i, true);
+            for (int j = i + 1; j < 32; j++)
+            {
+                Physics2D.IgnoreLayerCollision(i, j, true);
+            }
+        }
+
+        // Set required collisions (false = they will collide)
+        Physics2D.IgnoreLayerCollision(pathLayer, enemyLayer, false);     // Path ? Enemy = ON
+        Physics2D.IgnoreLayerCollision(enemyLayer, obstacleLayer, false); // Enemy ? Obstacle = ON
+        Physics2D.IgnoreLayerCollision(projectileLayer, enemyLayer, false); // Projectile ? Enemy = ON
+
+        Debug.Log("Layers and Physics2D matrix configured successfully!");
+    }
+
+    private static void SetLayerIfEmpty(SerializedProperty layers, int index, string name)
+    {
+        SerializedProperty layerSP = layers.GetArrayElementAtIndex(index);
+        if (string.IsNullOrEmpty(layerSP.stringValue))
+        {
+            layerSP.stringValue = name;
+        }
+    }
+}

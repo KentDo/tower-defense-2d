@@ -12,10 +12,8 @@ public class TowerPlacer : MonoBehaviour
     public Grid grid;                         // optional: snap theo Grid Unity
 
     [Header("Masks")]
-    [Tooltip("Layer mask for ground placement validation")]
     public LayerMask groundMask;              // = Ground
-    [Tooltip("Layer mask for blocked areas (Path + Tower + Enemy + Obstacle)")]
-    public LayerMask blockedMask;             // = Layers 8-11
+    public LayerMask blockedMask;             // = Path + Tower + Enemy + Obstacle
 
     [Header("Ghost visuals")]
     public Color okColor = new Color(0f, 1f, 0f, 0.55f);
@@ -36,7 +34,6 @@ public class TowerPlacer : MonoBehaviour
         if (!cam) cam = Camera.main;
 
         // default masks nếu chưa kéo trong Inspector
-        // Setup default layer masks if not set in inspector
         if (groundMask.value == 0) groundMask = LayerMask.GetMask("Ground");
         if (blockedMask.value == 0) blockedMask = LayerMask.GetMask("Path", "Tower", "Enemy", "Obstacle");
 
@@ -147,13 +144,9 @@ public class TowerPlacer : MonoBehaviour
             return;
         }
 
-        // Place actual tower
+        // Đặt trụ thực sự
         var towerGO = Instantiate(sel.prefab, placePos, Quaternion.identity);
         towerGO.layer = LayerMask.NameToLayer("Tower");
-
-        // Play placement sound if there's an AudioSource
-        var audioSource = GetComponent<AudioSource>();
-        if (audioSource) audioSource.Play();
 
         // Sau khi đặt xong: hủy ghost hoặc giữ để đặt tiếp (tuỳ thiết kế)
         // Ở đây: giữ chế độ đặt liên tục
