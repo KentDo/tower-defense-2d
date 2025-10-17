@@ -1,154 +1,69 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Health))]
 public class EnemyController : MonoBehaviour
 {
-    [Header("Movement")]
-    public LevelManager path;      // Waypoints
-    public float speed = 2.5f;
-    public float reach = 0.05f;
+    [Header("References")]
+    [SerializeField] private Health health;       // tự lấy nếu để trống
 
-    Rigidbody2D rb;
-    Animator anim;
-    SpriteRenderer sr;
+    [Header("Path (được Spawner gán)")]
+    // Một số script di chuyển cần tham chiếu này.
+    public LevelManager path;
 
-    int idx;           // waypoint index
-    int lastDir = 1;   // 0=Down, 1=Side, 2=Up (để death chọn đúng clip)
-    bool isDead;
+    [Header("Death / Reward (optional)")]
+    [SerializeField] private int goldOnDeath = 0; // tuỳ dự án dùng hay không
+    [SerializeField] private GameObject deathVfx = null;
 
-    [Header("Health")]
-    [SerializeField] int maxHP = 10;                 // HP gốc của prefab
-    public int CurrentHP { get; private set; }
-    public int MaxHP => maxHP;
-    public Action<int, int> onHealthChanged;          // (optional) UI nghe sự kiện
+    // Sự kiện cho logic khác nếu muốn nghe enemy chết (tuỳ chọn)
+    public event Action<EnemyController> onDeath;
 
-    [Header("Facing (3 hướng)")]
-    public float deadZone = 0.001f;
-    [Range(0f, 1f)] public float axisBias = 0.15f;   // chống giật khi rẽ
-    public bool invertSideFlip = false;              // nếu sprite Side mặc định nhìn trái, bật cái này
-
-    [Header("Death")]
-    public bool useAnimationEvent = true;            // nếu chưa gắn event → đặt false để dùng timer
-    public float deathDuration = 0.6f;               // fallback thời gian clip Death
-
-    public Action<EnemyController> onDeath;          // callback khi destroy xong
+    // ===== API công khai (tương thích) =====
+    public int CurrentHP => health ? health.Current : 0;
+    public int MaxHP => health ? health.Max : 0;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0f;
-        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-
-        anim = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
-
-        CurrentHP = maxHP; // khởi tạo HP
+        if (!health) health = GetComponent<Health>();
     }
 
-    void Start()
+    void OnValidate()
     {
-        if (!path || path.PathCount < 2)
-        {
-            enabled = false;
-            return;
-        }
-
-        transform.position = path.GetPathPoint(0).position;
-        idx = 1;
-
-        Vector2 d0 = (Vector2)(path.GetPathPoint(1).position - path.GetPathPoint(0).position);
-        SetFacing(d0);
+        if (!health) health = GetComponent<Health>();
     }
 
-    void FixedUpdate()
-    {
-        if (isDead) return;
-        if (idx >= path.PathCount) return;
-
-        Vector2 target = path.GetPathPoint(idx).position;
-        Vector2 toTarget = target - (Vector2)transform.position;
-        Vector2 dir = toTarget.sqrMagnitude > 0.000001f ? toTarget.normalized : Vector2.zero;
-
-        SetFacing(dir);
-        rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
-
-        if (toTarget.magnitude <= reach)
-        {
-            idx++;
-            if (idx >= path.PathCount) return;
-
-            Vector2 nextDir = (Vector2)(path.GetPathPoint(idx).position - path.GetPathPoint(idx - 1).position);
-            SetFacing(nextDir);
-        }
-    }
-
-    // ===== Facing: 0=Down, 1=Side, 2=Up; chỉ lật khi Side =====
-    void SetFacing(Vector2 dir)
-    {
-        if (dir.sqrMagnitude < deadZone) return;
-
-        float ax = Mathf.Abs(dir.x);
-        float ay = Mathf.Abs(dir.y);
-
-        int d;
-        if (lastDir == 1) d = (ax >= ay + axisBias) ? 1 : (dir.y > 0f ? 2 : 0);
-        else d = (ay >= ax + axisBias) ? (dir.y > 0f ? 2 : 0) : 1;
-
-        if (d == 1)
-        {
-            bool flip = dir.x < 0f;
-            if (invertSideFlip) flip = !flip;
-            sr.flipX = flip;
-        }
-        else sr.flipX = false;
-
-        lastDir = d;
-        anim.SetInteger("Dir", d);
-    }
-
-    // ======= HEALTH API =======
+    /// <summary>Đặt Max HP (thường gọi khi spawn / theo wave). Sẽ refill đầy.</summary>
     public void SetMaxHP(int newMax)
     {
-        maxHP = Mathf.Max(1, newMax);
-        CurrentHP = maxHP;
-        onHealthChanged?.Invoke(CurrentHP, maxHP);
+        if (health) health.SetMax(newMax, refill: true);
     }
 
-    public void TakeDamage(int dmg)
+    /// <summary>Gây sát thương cho enemy.</summary>
+    public void TakeDamage(int damage)
     {
-        if (isDead || dmg <= 0) return;
-        CurrentHP = Mathf.Max(0, CurrentHP - dmg);
-        onHealthChanged?.Invoke(CurrentHP, maxHP);
-        if (CurrentHP == 0) Kill();
+        if (!health) return;
+        health.TakeDamage(damage);
+        if (health.IsDead)
+        {
+            Kill();
+        }
     }
 
-    // ======= DEATH =======
+    /// <summary>Hồi máu (nếu cần).</summary>
+    public void Heal(int amount)
+    {
+        if (health) health.Heal(amount);
+    }
+
+    /// <summary>Logic khi chết: FX/tiền thưởng/sự kiện…</summary>
     public void Kill()
     {
-        if (isDead) return;
-        isDead = true;
+        if (deathVfx) Instantiate(deathVfx, transform.position, Quaternion.identity);
 
-        rb.linearVelocity = Vector2.zero;
+        // TODO: nếu có hệ thống vàng/điểm thì gọi ở đây
+        // LevelManager.Instance.AddGold(goldOnDeath);
 
-        anim.SetInteger("Dir", lastDir); // chốt hướng để vào Death_* đúng
-        anim.SetTrigger("Die");
-
-        if (!useAnimationEvent)
-            Invoke(nameof(FinishDeath), Mathf.Max(0.05f, deathDuration));
-    }
-
-    // Gọi từ Animation Event cuối clip Death_D/S/U
-    public void OnDeathAnimEnd()
-    {
-        if (useAnimationEvent) FinishDeath();
-    }
-
-    void FinishDeath()
-    {
-        onDeath?.Invoke(this);
-        Destroy(gameObject);
+        onDeath?.Invoke(this); // vẫn phát sự kiện để tương thích
+        Destroy(gameObject);   // hoặc trả về pool nếu dùng pooling
     }
 }
