@@ -10145,10 +10145,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7402781452825454029, guid: 577e6c9b3c1de7b45a41a8a955f6288e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7402781452825454029, guid: 577e6c9b3c1de7b45a41a8a955f6288e, type: 3}
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 7752877378541030474, guid: f7e76d695e89d5d4ba0dbf315007e6de, type: 3}
@@ -10156,30 +10152,6 @@ PrefabInstance:
       propertyPath: levelManager
       value: 
       objectReference: {fileID: 623933202}
-    - target: {fileID: 7402781452825454029, guid: 577e6c9b3c1de7b45a41a8a955f6288e, type: 3}
-      propertyPath: csvRelativePath
-      value: 'Waves/waves2.csv '
-      objectReference: {fileID: 0}
-    - target: {fileID: 7402781452825454029, guid: 577e6c9b3c1de7b45a41a8a955f6288e, type: 3}
-      propertyPath: enemyPrefabs.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7402781452825454029, guid: 577e6c9b3c1de7b45a41a8a955f6288e, type: 3}
-      propertyPath: 'enemyPrefabs.Array.data[0]'
-      value: 
-      objectReference: {fileID: 7752877378541030474, guid: f7e76d695e89d5d4ba0dbf315007e6de, type: 3}
-    - target: {fileID: 7402781452825454029, guid: 577e6c9b3c1de7b45a41a8a955f6288e, type: 3}
-      propertyPath: 'enemyPrefabs.Array.data[1]'
-      value: 
-      objectReference: {fileID: 7133990490981621069, guid: 8c0ca2261cfaeae42ac4511deb877da1, type: 3}
-    - target: {fileID: 7402781452825454029, guid: 577e6c9b3c1de7b45a41a8a955f6288e, type: 3}
-      propertyPath: 'enemyPrefabs.Array.data[2]'
-      value: 
-      objectReference: {fileID: 5166797582711784912, guid: 516320cbb7f3f79428311fa3d0fbbaa6, type: 3}
-    - target: {fileID: 7402781452825454029, guid: 577e6c9b3c1de7b45a41a8a955f6288e, type: 3}
-      propertyPath: 'enemyPrefabs.Array.data[3]'
-      value: 
-      objectReference: {fileID: 338495367711512078, guid: 4136afcd8c704df4687475cb53aa8561, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
