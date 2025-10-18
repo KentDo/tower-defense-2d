@@ -1,13 +1,28 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
+
+#region Wave data
+[System.Serializable]
+public class SpawnEntry
+{
+    public GameObject prefab;
+    public int count = 5;
+    public float startDelay = 0f;
+    public float interval = 0.6f;
+}
+
+[System.Serializable]
+public class Wave
+{
+    public string name = "Wave";
+    public SpawnEntry[] entries;
+    public float nextWaveDelay = 3f;
+    public float hpMultiplier = 1f; // 1 = giữ nguyên, 1.5 = +50%
+}
+#endregion
 
 public class EnemySpawner : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    [Header("Prefab & Path")]
-=======
     [Header("Path / Spawn point")]
     public LevelManager levelManager;
     [Tooltip("Để trống = spawn tại waypoint[0]")]
@@ -17,34 +32,17 @@ public class EnemySpawner : MonoBehaviour
     public bool autoStart = true;
     public Wave[] waves;
 
-    [Header("Wave Data (CSV)")]
-    public string csvRelativePath; // VD: "Waves/waves_map02.csv"
-    public GameObject[] enemyPrefabs; // Kéo tất cả prefab enemy vào đây
-
     [Header("Legacy (1 round đơn) — dùng khi Waves rỗng")]
->>>>>>> Stashed changes
     public GameObject enemyPrefab;
-    public LevelManager levelManager;
     public bool spawnAtFirstWaypoint = true;
-
-    [Header("Wave Settings")]
     public int count = 10;
     public float startDelay = 0f;
     public float interval = 1.2f;
-
-    [Header("Loop Settings")]
     public bool loop = false;
     public float loopDelay = 4f;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    [Header("Auto Start")]
-    public bool playOnStart = true;
-=======
-=======
->>>>>>> Stashed changes
     [Header("Reward")]
-    public int waveCompletionReward = 20;
+    public int waveCompletionReward = 20; // <== BỔ SUNG BIẾN REWARD
 
     [Header("Debug")]
     public int currentWaveIndex = -1;  // -1 = idle
@@ -66,51 +64,32 @@ public class EnemySpawner : MonoBehaviour
 
     // Cờ cho phép UI bỏ qua delay giữa waves khi người chơi bấm Next
     bool _skipInterWaveDelay = false;
->>>>>>> Stashed changes
 
     void Start()
     {
         if (!levelManager) levelManager = LevelManager.Instance;
-<<<<<<< Updated upstream
-        if (playOnStart) StartWave();
-=======
-
-        // Đọc dữ liệu từ CSV nếu có đường dẫn
-        if (!string.IsNullOrEmpty(csvRelativePath))
-        {
-            LoadWavesFromCSV(csvRelativePath);
-        }
-
-        // Đọc dữ liệu từ CSV nếu có đường dẫn
-        if (!string.IsNullOrEmpty(csvRelativePath))
-        {
-            LoadWavesFromCSV(csvRelativePath);
-        }
 
         if (autoStart)
         {
             if (HasWavesConfigured()) StartCoroutine(RunWaves(0));
             else StartCoroutine(RunLegacy());
         }
->>>>>>> Stashed changes
     }
 
-    public void StartWave(int? overrideCount = null)
+    // ========= API =========
+    public void StartWavesByButton()
     {
+        if (IsRunning) return; // tránh double-start
         StopAllCoroutines();
-        StartCoroutine(SpawnWave(overrideCount ?? count));
+        if (HasWavesConfigured()) StartCoroutine(RunWaves(0));
+        else StartCoroutine(RunLegacy());
     }
 
-    IEnumerator SpawnWave(int c)
+    /// <summary>Gọi từ UI khi đã clear (alive==0) để bỏ qua delay và vào wave kế.</summary>
+    public bool StartNextWaveNow()
     {
-<<<<<<< Updated upstream
-        if (!enemyPrefab)
-        {
-            Debug.LogWarning("[Spawner] Chưa gán enemyPrefab");
-            yield break;
-=======
         if (!CanStartNextWave) return false;
-        _skipInterWaveDelay = true;
+        _skipInterWaveDelay = true; // RunWaves sẽ bỏ qua nextWaveDelay cho wave hiện tại
         return true;
     }
 
@@ -170,11 +149,15 @@ public class EnemySpawner : MonoBehaviour
             // Chờ clear (alive == 0)
             yield return new WaitUntil(() => alive <= 0);
 
-            // === CỘNG THƯỞNG SAU KHI CLEAR WAVE ===
+            // === BỔ SUNG: CỘNG THƯỞNG SAU KHI CLEAR WAVE ===
             if (waveCompletionReward > 0)
             {
+                // Nếu đã có hệ thống tiền tệ/coin:
                 // PlayerMoney.Instance.AddMoney(waveCompletionReward);
-                Debug.Log($"[Spawner] Đã thưởng {waveCompletionReward} coins cho người chơi sau wave {currentWaveIndex + 1}!");
+                // Hoặc cộng biến nào đó nhóm bạn đang dùng:
+                // GameManager.coin += waveCompletionReward;
+                // Nếu chưa có, chỉ cần log:
+                Debug.Log($"[Spawner] Đã thưởng {waveCompletionReward} coins cho người chơi sau wave {currentWaveIndex+1}!");
             }
 
             // Delay giữa waves — có thể bị skip nếu người chơi bấm Next
@@ -182,15 +165,20 @@ public class EnemySpawner : MonoBehaviour
                 yield return new WaitForSeconds(wave.nextWaveDelay);
 
             _skipInterWaveDelay = false; // reset cho vòng sau
->>>>>>> Stashed changes
         }
 
-        if (!levelManager || levelManager.PathCount < 2)
+        currentWaveIndex = -1;
+        onAllWavesFinished?.Invoke();
+        Debug.Log("[Spawner] All waves finished.");
+    }
+
+    // ========= Legacy single-wave (giữ cho dự án cũ) =========
+    IEnumerator RunLegacy()
+    {
+        if (!ValidatePath()) yield break;
+
+        do
         {
-<<<<<<< Updated upstream
-            Debug.LogWarning("[Spawner] Không có LevelManager hoặc path < 2");
-            yield break;
-=======
             if (!enemyPrefab)
             {
                 Debug.LogWarning("[Spawner] Legacy: Chưa gán enemyPrefab");
@@ -227,54 +215,52 @@ public class EnemySpawner : MonoBehaviour
         if (ec)
         {
             ec.path = levelManager;
+
+            // Scale máu theo wave hiện tại
             if (currentWaveIndex >= 0 && currentWaveIndex < TotalWaves)
             {
                 float mul = Mathf.Max(0.01f, waves[currentWaveIndex].hpMultiplier);
                 int scaled = Mathf.RoundToInt(ec.MaxHP * mul);
                 ec.SetMaxHP(Mathf.Max(1, scaled));
             }
->>>>>>> Stashed changes
         }
 
-        Vector3 spawnPos = spawnAtFirstWaypoint
-            ? levelManager.GetPathPoint(0).position
-            : transform.position;
+        // Relay đếm alive
+        var relay = go.GetComponent<EnemyLifecycleRelay>() ?? go.AddComponent<EnemyLifecycleRelay>();
+        relay.Init(this);
+        alive++;
+    }
 
-        if (startDelay > 0f) yield return new WaitForSeconds(startDelay);
+    Vector3 GetSpawnPos()
+    {
+        if (spawnPointOverride) return spawnPointOverride.position;
+        if (levelManager && levelManager.PathCount > 0 && levelManager.GetPathPoint(0))
+            return levelManager.GetPathPoint(0).position;
+        return transform.position;
+    }
 
-        for (int i = 0; i < c; i++)
+    bool ValidatePath()
+    {
+        if (!levelManager || levelManager.PathCount < 1)
         {
-            var go = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-
-            var enemy = go.GetComponent<EnemyController>();
-            if (enemy != null)
-                enemy.path = levelManager;
-
-            yield return new WaitForSeconds(interval);
+            Debug.LogWarning("[Spawner] Không có LevelManager hoặc PathCount < 1");
+            return false;
         }
-
-        if (loop)
-        {
-            yield return new WaitForSeconds(loopDelay);
-            StartWave(c);
-        }
+        return true;
     }
 
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, 0.2f);
-
+        Gizmos.DrawWireSphere(GetSpawnPos(), 0.2f);
         if (levelManager && levelManager.GetPathPoint(0))
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(transform.position, levelManager.GetPathPoint(0).position);
+            Gizmos.DrawLine(transform.position, GetSpawnPos());
         }
     }
 #endif
-<<<<<<< Updated upstream
-=======
 
     // ===== Relay callback =====
     public void NotifyEnemyRemoved(EnemyLifecycleRelay relay)
@@ -282,51 +268,13 @@ public class EnemySpawner : MonoBehaviour
         if (relay == null || relay._counted) return;
         relay._counted = true;
         alive = Mathf.Max(0, alive - 1);
-    }
-
-    // =================== ĐỌC CSV ===================
-    public void LoadWavesFromCSV(string relativePath)
-    {
-        string fullPath = Path.Combine(Application.streamingAssetsPath, relativePath);
-        if (!File.Exists(fullPath))
-        {
-            Debug.LogError("[Spawner] Không tìm thấy file CSV: " + fullPath);
-            return;
-        }
-
-        var lines = File.ReadAllLines(fullPath);
-        var loadedWaves = new List<Wave>();
-        for (int i = 1; i < lines.Length; i++) // bỏ qua header
-        {
-            var parts = lines[i].Split(',');
-            if (parts.Length < 5) continue;
-            Wave wave = new Wave();
-            wave.name = $"Wave {parts[0]}";
-            wave.entries = new SpawnEntry[]
-            {
-                new SpawnEntry
-                {
-                    prefab = FindEnemyPrefabByName(parts[1]),
-                    count = int.Parse(parts[2]),
-                    interval = float.Parse(parts[3])
-                }
-            };
-            wave.hpMultiplier = float.Parse(parts[4]);
-            loadedWaves.Add(wave);
-        }
-        waves = loadedWaves.ToArray();
-    }
-
-    GameObject FindEnemyPrefabByName(string name)
-    {
-        foreach (var prefab in enemyPrefabs)
-            if (prefab != null && prefab.name == name)
-                return prefab;
-        Debug.LogWarning($"[Spawner] Không tìm thấy prefab tên {name}");
-        return null;
+        // Debug.Log($"[Spawner] Enemy removed. Alive={alive}, waveIdx={currentWaveIndex}");
     }
 }
 
+/// <summary>
+/// Gắn vào enemy để báo Spawner khi enemy bị Destroy (chết/đến đích).
+/// </summary>
 public class EnemyLifecycleRelay : MonoBehaviour
 {
     EnemySpawner spawner;
@@ -346,5 +294,4 @@ public class EnemyLifecycleRelay : MonoBehaviour
     {
         if (spawner) spawner.NotifyEnemyRemoved(this);
     }
->>>>>>> Stashed changes
 }

@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 4204064696776977495}
   - component: {fileID: -5588745200774284882}
   - component: {fileID: 7762449479343044343}
+  - component: {fileID: 1080655824723097168}
   m_Layer: 3
   m_Name: Tower
   m_TagString: Untagged
@@ -169,11 +170,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a373401cd765b42b041fa64fb95b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tower
+  towerName: Archer
+  startCoinsCost: 50
+  upgradeCost: 50
+  sellPercent: 0.6
   muzzle: {fileID: 10802636653670861}
   projectile: {fileID: 4201993262068200297, guid: ab3dcc4ddf3a84348a30da0e70839066, type: 3}
   weaponAnimator: {fileID: 0}
   fireRate: 1.2
   range: 10
+  damage: 1
   turnSpeed: 360
   enemyMask:
     serializedVersion: 2
@@ -187,6 +193,56 @@ MonoBehaviour:
   - {fileID: 7998958220294591405, guid: 1748435c462570b418d495e101df4303, type: 3}
   weaponOffsets: []
   startLevel: 0
+  dmgPerLevelMul: 1.25
+  firePerLevelMul: 1.1
+  rangePerLevelAdd: 0.25
+  upgradeCostMul: 1.4
+--- !u!61 &1080655824723097168
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864971164970055308}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2, y: 2}
+  m_EdgeRadius: 0
 --- !u!1 &5488628350690299873
 GameObject:
   m_ObjectHideFlags: 0
