@@ -1,8 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\FGU\\2d tower defense\\",
+  "WorkspaceRootPath": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FGU\\2d tower defense\\Library\\PackageCache\\com.unity.render-pipelines.universal@ba467ec059b9\\Runtime\\2D\\Light2DManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.render-pipelines.universal@ba467ec059b9\\Runtime\\2D\\Light2DManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -12,31 +13,39 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\arrowhoming.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+=======
+      "AbsoluteMoniker": "D:0:0:{8EF7253C-C211-2F1B-70B1-432BE2D91A8D}|Assembly-CSharp-Editor.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\editor\\waveautogenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EF7253C-C211-2F1B-70B1-432BE2D91A8D}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\editor\\waveautogenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\scripts\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\arrowhoming.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+>>>>>>> Stashed changes
       "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\arrowhoming.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\tower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\tower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerView.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\TowerView.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerView.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerWeapon_L1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\TowerWeapon_L1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerWeapon_L1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerCompose.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\TowerCompose.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerCompose.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,15 +55,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< Updated upstream
           "SelectedChildIndex": 1,
+=======
+          "SelectedChildIndex": 0,
+>>>>>>> Stashed changes
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+<<<<<<< Updated upstream
               "Title": "Light2DManager.cs",
               "DocumentMoniker": "D:\\FGU\\2d tower defense\\Library\\PackageCache\\com.unity.render-pipelines.universal@ba467ec059b9\\Runtime\\2D\\Light2DManager.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@ba467ec059b9\\Runtime\\2D\\Light2DManager.cs",
@@ -79,11 +89,37 @@
             },
             {
               "$type": "Document",
+=======
+              "Title": "WaveAutoGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Editor\\WaveAutoGenerator.cs",
+              "RelativeDocumentMoniker": "Assets\\Editor\\WaveAutoGenerator.cs",
+              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Editor\\WaveAutoGenerator.cs",
+              "RelativeToolTip": "Assets\\Editor\\WaveAutoGenerator.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAkwA0AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-18T03:18:47.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ArrowHoming.cs",
+              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\ArrowHoming.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ArrowHoming.cs",
+              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\ArrowHoming.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ArrowHoming.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwAsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-03T12:10:48.402Z"
+            },
+            {
+              "$type": "Document",
+>>>>>>> Stashed changes
               "DocumentIndex": 5,
               "Title": "EnemySpawner.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\EnemySpawner.cs",
+              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\EnemySpawner.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemySpawner.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\EnemySpawner.cs",
+              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\EnemySpawner.cs",
               "RelativeToolTip": "Assets\\Scripts\\EnemySpawner.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAAAB8AAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -94,9 +130,7 @@
               "DocumentIndex": 7,
               "Title": "TowerWeapon_L1.cs",
               "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerWeapon_L1.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TowerWeapon_L1.cs",
               "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerWeapon_L1.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TowerWeapon_L1.cs",
               "ViewState": "AgIAACcAAAAAAAAAAAAuwEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-03T11:58:32.05Z"
@@ -106,9 +140,7 @@
               "DocumentIndex": 4,
               "Title": "TowerView.cs",
               "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerView.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TowerView.cs",
               "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerView.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TowerView.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-03T11:58:31.297Z"
             },
@@ -117,9 +149,7 @@
               "DocumentIndex": 8,
               "Title": "TowerCompose.cs",
               "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerCompose.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TowerCompose.cs",
               "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerCompose.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TowerCompose.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAmwAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-03T11:58:30.379Z"
@@ -128,9 +158,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Tower.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\Tower.cs",
+              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Tower.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Tower.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\Tower.cs",
+              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Tower.cs",
               "RelativeToolTip": "Assets\\Scripts\\Tower.cs",
               "ViewState": "AgIAAGcAAAAAAAAAAAAowFQAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -140,9 +170,9 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "LevelManager.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\LevelManager.cs",
+              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\LevelManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\LevelManager.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\LevelManager.cs",
+              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\LevelManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\LevelManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -152,9 +182,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "EnemyController.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\EnemyController.cs",
+              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\EnemyController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyController.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\EnemyController.cs",
+              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\EnemyController.cs",
               "RelativeToolTip": "Assets\\Scripts\\EnemyController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGEAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
