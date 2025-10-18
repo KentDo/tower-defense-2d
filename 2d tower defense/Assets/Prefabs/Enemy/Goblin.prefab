@@ -194,15 +194,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf31012969a55e947ad404c830d93c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  health: {fileID: 1340118883102463025}
   path: {fileID: 0}
-  speed: 1
-  reach: 0.05
-  maxHP: 4
-  deadZone: 0.001
-  axisBias: 0.15
-  invertSideFlip: 1
-  useAnimationEvent: 1
-  deathDuration: 0.6
+  moveSpeed: 2
+  useRotation: 0
+  rotationSpeed: 5
+  waypointReachDistance: 0.1
+  goldOnDeath: 0
+  deathVfx: {fileID: 0}
 --- !u!114 &1340118883102463025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5a93a3438cfe64fbb5b5b17b999527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
+  maxHealth: 10
   destroyOnDeath: 0
 --- !u!114 &2537836876166812195
 MonoBehaviour:

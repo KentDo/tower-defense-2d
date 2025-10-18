@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8456772759853976372}
   - component: {fileID: 8734000158885516275}
   - component: {fileID: 4294819227231077342}
+  - component: {fileID: 4595072376298157323}
   m_Layer: 7
   m_Name: Wolf
   m_TagString: Untagged
@@ -192,15 +193,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf31012969a55e947ad404c830d93c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  health: {fileID: 4595072376298157323}
   path: {fileID: 0}
-  speed: 2.5
-  reach: 0.05
-  maxHP: 3
-  deadZone: 0.001
-  axisBias: 0.15
-  invertSideFlip: 1
-  useAnimationEvent: 1
-  deathDuration: 0.6
+  moveSpeed: 2
+  useRotation: 0
+  rotationSpeed: 5
+  waypointReachDistance: 0.1
+  goldOnDeath: 0
+  deathVfx: {fileID: 0}
+--- !u!114 &4595072376298157323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166797582711784912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5a93a3438cfe64fbb5b5b17b999527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 10
+  destroyOnDeath: 0
 --- !u!1001 &3628396258220957077
 PrefabInstance:
   m_ObjectHideFlags: 0

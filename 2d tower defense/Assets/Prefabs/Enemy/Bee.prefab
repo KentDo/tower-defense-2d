@@ -193,15 +193,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf31012969a55e947ad404c830d93c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  health: {fileID: 2010198237099397430}
   path: {fileID: 0}
-  speed: 3
-  reach: 0.05
-  maxHP: 3
-  deadZone: 0.001
-  axisBias: 0.15
-  invertSideFlip: 1
-  useAnimationEvent: 1
-  deathDuration: 0.6
+  moveSpeed: 2
+  useRotation: 0
+  rotationSpeed: 5
+  waypointReachDistance: 0.1
+  goldOnDeath: 0
+  deathVfx: {fileID: 0}
 --- !u!114 &2010198237099397430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +318,10 @@ PrefabInstance:
     - target: {fileID: 4621023254251953867, guid: 6e78c509fdcca0b49be0c154c0d36912, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353449696852415955, guid: 6e78c509fdcca0b49be0c154c0d36912, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8867251701838340779, guid: 6e78c509fdcca0b49be0c154c0d36912, type: 3}
       propertyPath: m_Name
