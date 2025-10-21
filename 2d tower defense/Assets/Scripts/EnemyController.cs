@@ -78,7 +78,26 @@ public class EnemyController : MonoBehaviour
         if (toTarget.magnitude <= reach)
         {
             idx++;
-            if (idx >= path.PathCount) return;
+            if (idx >= path.PathCount)
+            {
+                // ======= TỚI CUỐI ĐƯỜNG =======
+                // 1. Trừ máu base:
+                var lm = LevelManager.Instance ?? FindObjectOfType<LevelManager>();
+                if (lm) lm.OnEnemyReachEnd(gameObject, 1); // 1 là damage vào base
+
+                // 2. (Optional) Báo cho Spawner nếu có relay:
+                var relay = GetComponent<EnemyLifecycleRelay>();
+                if (relay && !relay._counted)
+                {
+                    var spawner = FindObjectOfType<EnemySpawner>();
+                    if (spawner) spawner.NotifyEnemyRemoved(relay);
+                    relay._counted = true;
+                }
+
+                // 3. Destroy enemy:
+                Destroy(gameObject);
+                return;
+            }
 
             Vector2 nextDir = (Vector2)(path.GetPathPoint(idx).position - path.GetPathPoint(idx - 1).position);
             SetFacing(nextDir);

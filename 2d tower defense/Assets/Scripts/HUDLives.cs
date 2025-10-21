@@ -16,8 +16,8 @@ public class HUDLives : MonoBehaviour
         if (!txt) txt = GetComponent<TextMeshProUGUI>();
 
         // cập nhật khi đổi
-        lm.onLivesChanged += v => { if (txt) txt.text = $"Lives: {v}"; };
+        lm.onLivesChanged += v => { if (txt) txt.text = v.ToString(); };
         // hiển thị lần đầu
-        if (txt) txt.text = $"Lives: {lm.lives}";
+        if (txt) txt.text = lm.lives.ToString();
     }
 }
