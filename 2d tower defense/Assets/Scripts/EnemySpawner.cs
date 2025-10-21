@@ -157,6 +157,7 @@ public class EnemySpawner : MonoBehaviour
                 // Hoặc cộng biến nào đó nhóm bạn đang dùng:
                 // GameManager.coin += waveCompletionReward;
                 // Nếu chưa có, chỉ cần log:
+                BuildManager.I.Add(waveCompletionReward);
                 Debug.Log($"[Spawner] Đã thưởng {waveCompletionReward} coins cho người chơi sau wave {currentWaveIndex+1}!");
             }
 
