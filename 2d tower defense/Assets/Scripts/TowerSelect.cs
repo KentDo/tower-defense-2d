@@ -14,12 +14,15 @@ public class TowerSelect : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (tower == null || panel == null) return;
+        if (tower == null || panel == null)
+            return;
 
-        if (panel.CurrentTower == tower)
+        // Nếu panel đang mở cho cùng tower → ẩn
+        if (panel.isActiveAndEnabled && panel.CurrentTower == tower)
             panel.Hide();
         else
             panel.Show(tower);
     }
+
 
 }

@@ -3,15 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\towerinfopanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\scripts\\towerinfopanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\towerinfopanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\scripts\\towerselect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\towerselect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\towerselect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\scripts\\towerplacer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\towerplacer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\towerplacer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\TowerPlacer.cs",
               "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\TowerPlacer.cs",
               "RelativeToolTip": "Assets\\Scripts\\TowerPlacer.cs",
-              "ViewState": "AgIAAJMAAAAAAAAAAAAQwOEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAANMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-21T14:52:04.076Z",
               "EditorCaption": ""
@@ -49,7 +49,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\TowerSelect.cs",
               "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\TowerSelect.cs",
               "RelativeToolTip": "Assets\\Scripts\\TowerSelect.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAowBQAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-21T13:40:28.462Z",
               "EditorCaption": ""
@@ -62,7 +62,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\TowerInfoPanel.cs",
               "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\TowerInfoPanel.cs",
               "RelativeToolTip": "Assets\\Scripts\\TowerInfoPanel.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAQwHAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAswDAAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-21T13:37:26.63Z",
               "EditorCaption": ""
@@ -77,8 +77,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Tower.cs",
               "ViewState": "AgIAALcAAAAAAAAAAAAswMsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T13:27:16.212Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-21T13:27:16.212Z"
             }
           ]
         }

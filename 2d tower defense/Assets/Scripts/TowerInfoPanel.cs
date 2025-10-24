@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class TowerInfoPanel : MonoBehaviour
 {
@@ -33,14 +35,24 @@ public class TowerInfoPanel : MonoBehaviour
 
     public void Show(Tower tower)
     {
-        if (currentTower != null)
-            currentTower.onStatsChanged -= UpdateDisplay;
+        if (tower == null)
+        {
+            Debug.LogWarning("TowerInfoPanel.Show() - tower null!");
+            return;
+        }
 
+        Debug.Log($"[TowerInfoPanel] Show info for {tower.name}");
         currentTower = tower;
-        currentTower.onStatsChanged += UpdateDisplay;
         gameObject.SetActive(true);
-        UpdateDisplay(currentTower);
+
+        // hiển thị nội dung
+        txtName.text = tower.towerName;
+        txtLevel.text = $"Level: {tower.level}";
+        txtDamage.text = $"DMG: {tower.damage:F1}";
+        txtFireRate.text = $"ROF: {tower.fireRate:F2}/s";
+        txtRange.text = $"Range: {tower.range:F1}";
     }
+
 
     public void Hide()
     {
@@ -63,9 +75,9 @@ public class TowerInfoPanel : MonoBehaviour
         float nextRange = t.range + t.rangePerLevelAdd;
 
         // hiển thị hiện tại → sau nâng cấp
-        txtDamage.text = $"DMG: {t.damage:F1} → <color=#00FF00>{nextDmg:F1}</color>";
-        txtFireRate.text = $"ROF: {t.fireRate:F2} → <color=#00FF00>{nextFire:F2}</color>/s";
-        txtRange.text = $"Range: {t.range:F2} → <color=#00FF00>{nextRange:F2}</color>";
+        txtDamage.text = $"DMG: {t.damage:F1}";
+        txtFireRate.text = $"ROF: {t.fireRate:F2}/s";
+        txtRange.text = $"Range: {t.range:F2}";
 
         // ========== CẬP NHẬT NÚT ==========
         int upgrade = Mathf.RoundToInt(t.upgradeCost);
@@ -99,14 +111,32 @@ public class TowerInfoPanel : MonoBehaviour
     // Ẩn panel khi click ra ngoài
     void Update()
     {
-        if (gameObject.activeSelf && Input.GetMouseButtonDown(0))
+        if (!gameObject.activeSelf)
+            return;
+
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            // Nếu click vào UI (nút...) thì không làm gì
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return;
+
+            Vector2 worldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            var hit = Physics2D.OverlapPoint(worldPos);
+
+            // Nếu trúng Tower
+            if (hit)
             {
-                var hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                if (!hit || hit.GetComponent<Tower>() == null)
-                    Hide();
+                Tower t = hit.GetComponent<Tower>();
+                if (t != null)
+                {
+                    if (t != currentTower)
+                        Show(t);
+                    return;
+                }
             }
+
+            // Không trúng gì → ẩn panel
+            Hide();
         }
     }
 }
