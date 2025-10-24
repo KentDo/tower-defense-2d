@@ -1,7 +1,8 @@
+using System.Collections.Generic;
+
 public static class GameSession
 {
-    public static string CurrentMap = "Map1";
-    public static System.Collections.Generic.List<int> UsedQuestionIndices = new System.Collections.Generic.List<int>();
+    public static List<int> UsedQuestionIndices = new List<int>();
 
     public static void ResetQuestionsIfNeeded(int total)
     {

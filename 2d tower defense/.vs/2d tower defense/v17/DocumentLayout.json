@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\scripts\\quiz\\quizquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\quiz\\quizquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\scripts\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\quiz\\gamesession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\quiz\\gamesession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quest\\QuizManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Quest\\QuizManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\quiz\\quizquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\quiz\\quizquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\quiz\\quizmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\quiz\\quizmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,17 +30,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GameManager.cs",
+              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GameManager.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAwwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T10:06:25.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "LevelManager.cs",
+              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\LevelManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\LevelManager.cs",
+              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\LevelManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\LevelManager.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowDYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T08:30:00.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QuizManager.cs",
+              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quiz\\QuizManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Quiz\\QuizManager.cs",
+              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quiz\\QuizManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Quiz\\QuizManager.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAwwFcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T08:29:02.308Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "QuizQuestion.cs",
               "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quiz\\QuizQuestion.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Quiz\\QuizQuestion.cs",
               "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quiz\\QuizQuestion.cs",
               "RelativeToolTip": "Assets\\Scripts\\Quiz\\QuizQuestion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-24T07:31:54.907Z",
               "EditorCaption": ""
@@ -45,21 +92,9 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Quiz\\GameSession.cs",
               "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quiz\\GameSession.cs",
               "RelativeToolTip": "Assets\\Scripts\\Quiz\\GameSession.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T07:31:37.849Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "QuizManager.cs",
-              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quest\\QuizManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Quest\\QuizManager.cs",
-              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quest\\QuizManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Quest\\QuizManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T07:03:56.021Z",
+              "WhenOpened": "2025-10-24T07:31:37.849Z",
               "EditorCaption": ""
             }
           ]

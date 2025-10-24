@@ -47,12 +47,11 @@ public class LevelManager : MonoBehaviour
         {
             isGameOverTriggered = true;
 
-            Debug.Log("HP = 0 → Chuyển sang Quiz!");
-
-            GameSession.CurrentMap = SceneManager.GetActiveScene().name;
-            Debug.Log("Save CurrentMap = " + GameSession.CurrentMap);
-
-            SceneManager.LoadScene("QuizScene");
+            QuizManager quiz = FindObjectOfType<QuizManager>();
+            if (quiz != null)
+                quiz.ShowQuiz();
+            else
+                Debug.LogError("Không tìm thấy QuizManager trong scene!");
         }
     }
 

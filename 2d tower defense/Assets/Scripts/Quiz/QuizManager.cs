@@ -1,43 +1,43 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class QuizManager : MonoBehaviour
 {
-    [Header("UI References")]
+    public GameObject panelQuiz;
     public TMP_Text txtQuestion;
     public Button[] answerButtons;
-    public GameObject panelBackground;
-
-    [Header("Scene References")]
-    public string fallbackMap = "Map1";
-    public string gameOverScene = "GameOverScene";
 
     private List<QuizQuestion> questions = new List<QuizQuestion>();
     private int correctIndex = -1;
 
-    void Start()
+    void Awake()
     {
         LoadQuestions();
+        panelQuiz.SetActive(false);
+    }
 
-        GameSession.ResetQuestionsIfNeeded(questions.Count);
+    public void ShowQuiz()
+    {
+        if (questions.Count == 0) return;
 
+        panelQuiz.SetActive(true);
+        Time.timeScale = 0f; // pause gameplay
         ShowQuestion();
     }
 
     void LoadQuestions()
     {
-        var jsonFile = Resources.Load<TextAsset>("questions");
+        TextAsset jsonFile = Resources.Load<TextAsset>("questions");
         if (jsonFile == null)
         {
             Debug.LogError("Không tìm thấy Resources/questions.json!");
             return;
         }
 
-        var wrapped = JsonUtility.FromJson<QuestionsWrapper>(jsonFile.text);
-        questions = new List<QuizQuestion>(wrapped.questions);
+        QuestionsWrapper wrapper = JsonUtility.FromJson<QuestionsWrapper>(jsonFile.text);
+        questions = new List<QuizQuestion>(wrapper.questions);
     }
 
     void ShowQuestion()
@@ -48,15 +48,16 @@ public class QuizManager : MonoBehaviour
 
         GameSession.UsedQuestionIndices.Add(idx);
 
-        var q = questions[idx];
+        QuizQuestion q = questions[idx];
         txtQuestion.text = q.question;
         correctIndex = q.correctIndex;
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
             int choice = i;
-            var label = answerButtons[i].GetComponentInChildren<TMP_Text>();
+            TMP_Text label = answerButtons[i].GetComponentInChildren<TMP_Text>();
             label.text = q.answers[i];
+
             answerButtons[i].onClick.RemoveAllListeners();
             answerButtons[i].onClick.AddListener(() => Answer(choice));
         }
@@ -64,23 +65,22 @@ public class QuizManager : MonoBehaviour
 
     void Answer(int chosenIndex)
     {
+        panelQuiz.SetActive(false);
+        Time.timeScale = 1f; // resume gameplay
+
         if (chosenIndex == correctIndex)
         {
-            // ✅ Trả lời đúng thì hồi sinh 1 mạng
-            LevelManager.Instance.SetLives(1);
-
-            Debug.Log("Đúng! Load lại map: " + GameSession.CurrentMap);
-            SceneManager.LoadScene(GameSession.CurrentMap);
+            if (LevelManager.Instance != null)
+                LevelManager.Instance.SetLives(1); // hồi 1 máu
         }
         else
         {
-            Debug.Log("Sai! Thua hẳn!");
-            SceneManager.LoadScene(gameOverScene);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
         }
     }
 
     [System.Serializable]
-    class QuestionsWrapper
+    private class QuestionsWrapper
     {
         public QuizQuestion[] questions;
     }
