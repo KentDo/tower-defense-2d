@@ -25,7 +25,7 @@ public class TowerInfoPanel : MonoBehaviour
     {
         Hide();
 
-        // Tự lấy text con nếu chưa set thủ công
+        // ✅ Gán label text cho nút
         txtUpgradeLabel = btnUpgrade.GetComponentInChildren<TMP_Text>();
         txtSellLabel = btnSell.GetComponentInChildren<TMP_Text>();
 
@@ -35,31 +35,23 @@ public class TowerInfoPanel : MonoBehaviour
 
     public void Show(Tower tower)
     {
-        if (tower == null)
-        {
-            Debug.LogWarning("TowerInfoPanel.Show() - tower null!");
-            return;
-        }
+        if (tower == null) return;
 
         Debug.Log($"[TowerInfoPanel] Show info for {tower.name}");
-        currentTower = tower;
-        gameObject.SetActive(true);
 
-        // hiển thị nội dung
-        txtName.text = tower.towerName;
-        txtLevel.text = $"Level: {tower.level}";
-        txtDamage.text = $"DMG: {tower.damage:F1}";
-        txtFireRate.text = $"ROF: {tower.fireRate:F2}/s";
-        txtRange.text = $"Range: {tower.range:F1}";
-    }
-
-
-    public void Hide()
-    {
+        // ✅ Bỏ đăng ký cũ (nếu đang xem Tower khác)
         if (currentTower != null)
             currentTower.onStatsChanged -= UpdateDisplay;
-        currentTower = null;
-        gameObject.SetActive(false);
+
+        currentTower = tower;
+
+        // ✅ Đăng ký cập nhật UI mỗi khi Tower thay đổi stats
+        currentTower.onStatsChanged += UpdateDisplay;
+
+        gameObject.SetActive(true);
+
+        // ✅ Cập nhật toàn bộ thông tin khi mở panel lần đầu
+        UpdateDisplay(currentTower);
     }
 
     void UpdateDisplay(Tower t)
@@ -68,27 +60,29 @@ public class TowerInfoPanel : MonoBehaviour
 
         txtName.text = t.towerName;
         txtLevel.text = $"Level: {t.level}";
-
-        // ========== TÍNH CHỈ SỐ SAU KHI NÂNG CẤP ==========
-        float nextDmg = t.damage * t.dmgPerLevelMul;
-        float nextFire = t.fireRate * t.firePerLevelMul;
-        float nextRange = t.range + t.rangePerLevelAdd;
-
-        // hiển thị hiện tại → sau nâng cấp
         txtDamage.text = $"DMG: {t.damage:F1}";
         txtFireRate.text = $"ROF: {t.fireRate:F2}/s";
-        txtRange.text = $"Range: {t.range:F2}";
+        txtRange.text = $"Range: {t.range:F1}";
 
-        // ========== CẬP NHẬT NÚT ==========
-        int upgrade = Mathf.RoundToInt(t.upgradeCost);
-        int sell = Mathf.RoundToInt(t.upgradeCost * t.sellPercent);
+        int upgradeCost = Mathf.RoundToInt(t.upgradeCost);
+        int sellValue = Mathf.RoundToInt(upgradeCost * t.sellPercent);
 
-        if (txtUpgradeLabel) txtUpgradeLabel.text = $"Upgrade ({upgrade})";
-        if (txtSellLabel) txtSellLabel.text = $"Sell (+{sell})";
+        // ✅ Text nút Upgrade & Sell chính xác
+        if (txtUpgradeLabel) txtUpgradeLabel.text = $"Upgrade ({upgradeCost})";
+        if (txtSellLabel) txtSellLabel.text = $"Sell (+{sellValue})";
 
-        // Nếu không đủ tiền -> disable
-        if (BuildManager.I)
-            btnUpgrade.interactable = BuildManager.I.CanAfford(upgrade);
+        // ✅ disable button nếu không đủ tiền
+        if (BuildManager.I != null)
+            btnUpgrade.interactable = BuildManager.I.CanAfford(upgradeCost);
+    }
+
+    public void Hide()
+    {
+        if (currentTower != null)
+            currentTower.onStatsChanged -= UpdateDisplay;
+
+        currentTower = null;
+        gameObject.SetActive(false);
     }
 
     void OnUpgrade()
@@ -108,7 +102,7 @@ public class TowerInfoPanel : MonoBehaviour
         }
     }
 
-    // Ẩn panel khi click ra ngoài
+    // ✅ Ẩn panel khi click ra ngoài
     void Update()
     {
         if (!gameObject.activeSelf)
@@ -116,14 +110,12 @@ public class TowerInfoPanel : MonoBehaviour
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            // Nếu click vào UI (nút...) thì không làm gì
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
                 return;
 
-            Vector2 worldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            var hit = Physics2D.OverlapPoint(worldPos);
+            Vector2 world = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            var hit = Physics2D.OverlapPoint(world);
 
-            // Nếu trúng Tower
             if (hit)
             {
                 Tower t = hit.GetComponent<Tower>();
@@ -135,7 +127,6 @@ public class TowerInfoPanel : MonoBehaviour
                 }
             }
 
-            // Không trúng gì → ẩn panel
             Hide();
         }
     }

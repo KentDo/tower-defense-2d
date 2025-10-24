@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System;   // <-- cần cho Action<>
+using UnityEngine.SceneManagement;
+
 
 public class LevelManager : MonoBehaviour
 {
@@ -32,16 +34,28 @@ public class LevelManager : MonoBehaviour
     public Transform GetPathPoint(int i) => (i >= 0 && i < PathCount) ? waypoints[i] : null;
 
     // ========== BASE DAMAGE ==========
+    bool isGameOverTriggered = false;
+
     public void SetLives(int value)
     {
+        if (isGameOverTriggered) return;
+
         lives = Mathf.Max(0, value);
         onLivesChanged?.Invoke(lives);
+
         if (lives <= 0)
         {
-            Debug.Log("Game Over");
-            // TODO: show UI / reload scene
+            isGameOverTriggered = true;
+
+            Debug.Log("HP = 0 → Chuyển sang Quiz!");
+
+            GameSession.CurrentMap = SceneManager.GetActiveScene().name;
+            Debug.Log("Save CurrentMap = " + GameSession.CurrentMap);
+
+            SceneManager.LoadScene("QuizScene");
         }
     }
+
 
     public void DamageBase(int amount)
     {
