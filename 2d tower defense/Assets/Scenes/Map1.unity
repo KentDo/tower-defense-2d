@@ -10715,6 +10715,10 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 1946393987}
+    - target: {fileID: 2216188865818207363, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2535734564251608553, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
       propertyPath: spawner
       value: 
@@ -11026,6 +11030,10 @@ PrefabInstance:
     - target: {fileID: 6579290385248815335, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600564677259820635, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7251332691197709098, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
       propertyPath: m_text

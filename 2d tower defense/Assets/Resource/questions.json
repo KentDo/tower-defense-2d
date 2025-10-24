@@ -1,0 +1,24 @@
+﻿{
+  "questions": [
+    { "question":"2 + 3 = ?", "answers":["3","4","5","6"], "correctIndex":2 },
+    { "question":"Màu lá cây thường là màu gì?", "answers":["Đỏ","Xanh","Vàng","Tím"], "correctIndex":1 },
+    { "question":"Thủ đô Việt Nam là?", "answers":["Hà Nội","Hồ Chí Minh","Đà Nẵng","Huế"], "correctIndex":0 },
+    { "question":"Nước sôi ở nhiệt độ ~ bao nhiêu độ C (ở mực nước biển)?", "answers":["100","90","80","70"], "correctIndex":0 },
+    { "question":"Hệ điều hành Windows do hãng nào phát triển?", "answers":["Apple","Microsoft","Google","Amazon"], "correctIndex":1 },
+    { "question":"Trong Tower Defense, trụ dùng để làm gì?", "answers":["Xây nhà","Tấn công kẻ địch","Trồng cây","Lưu trữ"], "correctIndex":1 },
+    { "question":"Trái tim (biểu tượng) thường tượng trưng cho gì trong game?", "answers":["Tiền","Máu/mạng sống","Kinh nghiệm","Vũ khí"], "correctIndex":1 },
+    { "question":"Số nguyên tố nhỏ nhất là?", "answers":["0","1","2","3"], "correctIndex":2 },
+    { "question":"Trái Đất quay quanh mặt trời trong bao nhiêu ngày ~ 1 năm?", "answers":["365","360","300","400"], "correctIndex":0 },
+    { "question":"Thứ tự chữ cái đầu tiên trong bảng chữ cái tiếng Việt là?", "answers":["B","A","C","D"], "correctIndex":1 },
+    { "question":"Vật liệu dẫn điện tốt nhất trong danh sách: ", "answers":["Gỗ","Kính","Đồng","Nhựa"], "correctIndex":2 },
+    { "question":"Nước đóng băng ở 0 độ C. Đúng hay sai?", "answers":["Đúng","Sai","Tùy điều kiện","Không biết"], "correctIndex":0 },
+    { "question":"Trong game TD, thường mua trụ bằng gì?", "answers":["Máu","Tiền/Coins","Thời gian","Kinh nghiệm"], "correctIndex":1 },
+    { "question":"Ai là tác giả của tác phẩm 'Chiếc thuyền ngoài xa'?", "answers":["Nguyễn Minh Châu","Nam Cao","Tô Hoài","Nguyễn Du"], "correctIndex":0 },
+    { "question":"Hệ số nhân damage mỗi level là 1.25. Nếu base = 4 thì level 1 damage = ?", "answers":["5","4.25","6","4.5"], "correctIndex":0 },
+    { "question":"Máy bay thường bay trên tầng nào của bầu trời (quá chung)?", "answers":["Gần mặt đất","Trung bình","Trên cao","Không bay"], "correctIndex":2 },
+    { "question":"Công thức tính diện tích hình chữ nhật là gì?", "answers":["a+b","a*b","2*(a+b)","(a+b)/2"], "correctIndex":1 },
+    { "question":"Tốc độ gấp đôi nghĩa là tăng gấp...", "answers":["2 lần","1 lần","0.5 lần","3 lần"], "correctIndex":0 },
+    { "question":"Mùa nào có Tết Nguyên Đán ở Việt Nam?", "answers":["Mùa Hè","Mùa Xuân","Mùa Thu","Mùa Đông"], "correctIndex":1 },
+    { "question":"Số chẵn nhỏ nhất là?", "answers":["0","1","2","3"], "correctIndex":0 }
+  ]
+}
