@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System;   // <-- cần cho Action<>
+using UnityEngine.SceneManagement;
+using System;   // cần cho Action<>
 
 public class LevelManager : MonoBehaviour
 {
@@ -8,23 +9,70 @@ public class LevelManager : MonoBehaviour
     [Header("Game State")]
     public int lives = 20;
 
-    // === HUD subscribe vào đây ===
+    // HUD subscribe vào đây
     public event Action<int> onLivesChanged;
 
     [Header("Path Settings")]
     public Transform[] waypoints;
 
+    [Header("Scene Config")]
+    [Tooltip("Tên scene Lobby để bỏ qua khi auto-save last level")]
+    public string lobbySceneName = "Lobby";
+
+    [Tooltip("Tự lưu tên scene hiện tại khi scene được load (trừ Lobby)")]
+    public bool autoSaveLastLevel = true;
+
     void Awake()
+{
+    if (Instance && Instance != this)
     {
-        if (Instance && Instance != this) { Destroy(gameObject); return; }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        Destroy(gameObject);
+        return;
+    }
+    Instance = this;
+    // ❌ XÓA dòng dưới vì không cần giữ qua scene
+    // DontDestroyOnLoad(gameObject);
+}
+
+
+    void OnEnable()
+    {
+        // Theo dõi khi scene được load để auto-save
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void Start()
     {
-        // bắn event lần đầu để HUD hiển thị đúng ngay khi vào game
+        // Bắn event lần đầu để HUD hiển thị đúng ngay khi vào game
         onLivesChanged?.Invoke(lives);
+
+        // Trường hợp LevelManager được đặt trực tiếp trong map (không đi qua Lobby),
+        // vẫn lưu tên scene hiện tại (nếu không phải Lobby)
+        TryAutoSaveCurrentScene();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Mỗi lần đổi scene, bắn lại HUD và (tuỳ chọn) auto-save
+        onLivesChanged?.Invoke(lives);
+        TryAutoSaveCurrentScene();
+    }
+
+    private void TryAutoSaveCurrentScene()
+    {
+        if (!autoSaveLastLevel) return;
+
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (!string.IsNullOrEmpty(sceneName) && sceneName != lobbySceneName)
+        {
+            SaveSystem.SetLastLevel(sceneName);
+            // Debug.Log($"✅ Saved last level: {sceneName}");
+        }
     }
 
     // ========== PATH ==========
