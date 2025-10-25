@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System;   // <-- cần cho Action<>
+using System;
 using UnityEngine.SceneManagement;
-
+using System.Collections; // thêm để dùng coroutine
 
 public class LevelManager : MonoBehaviour
 {
@@ -16,6 +16,10 @@ public class LevelManager : MonoBehaviour
     [Header("Path Settings")]
     public Transform[] waypoints;
 
+    // ==== trạng thái game ====
+    bool isGameOverTriggered = false;
+    bool isInvulnerable = false; // 🛡 base miễn sát thương tạm thời
+
     void Awake()
     {
         if (Instance && Instance != this) { Destroy(gameObject); return; }
@@ -25,17 +29,13 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        // bắn event lần đầu để HUD hiển thị đúng ngay khi vào game
         onLivesChanged?.Invoke(lives);
     }
 
-    // ========== PATH ==========
     public int PathCount => waypoints?.Length ?? 0;
     public Transform GetPathPoint(int i) => (i >= 0 && i < PathCount) ? waypoints[i] : null;
 
     // ========== BASE DAMAGE ==========
-    bool isGameOverTriggered = false;
-
     public void SetLives(int value)
     {
         if (isGameOverTriggered) return;
@@ -46,7 +46,6 @@ public class LevelManager : MonoBehaviour
         if (lives <= 0)
         {
             isGameOverTriggered = true;
-
             QuizManager quiz = FindObjectOfType<QuizManager>();
             if (quiz != null)
                 quiz.ShowQuiz();
@@ -55,9 +54,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-
     public void DamageBase(int amount)
     {
+        // 🛡 nếu đang miễn sát thương thì bỏ qua
+        if (isInvulnerable) return;
         SetLives(lives - Mathf.Abs(amount));
     }
 
@@ -66,5 +66,28 @@ public class LevelManager : MonoBehaviour
     {
         DamageBase(damage);
         if (enemy) Destroy(enemy);
+    }
+
+    // ========== HỒI SINH ==========
+    public void RevivePlayer(int extraLives = 1)
+    {
+        isGameOverTriggered = false;
+        SetLives(lives + extraLives);
+    }
+
+    // 🛡 Bật bất tử trong thời gian tạm
+    public void ActivateInvulnerability(float duration)
+    {
+        if (!isInvulnerable)
+            StartCoroutine(InvulnerabilityCoroutine(duration));
+    }
+
+    private IEnumerator InvulnerabilityCoroutine(float duration)
+    {
+        isInvulnerable = true;
+        Debug.Log($"🛡 Base bất tử trong {duration} giây...");
+        yield return new WaitForSeconds(duration);
+        isInvulnerable = false;
+        Debug.Log("⛔ Hết thời gian bất tử.");
     }
 }
