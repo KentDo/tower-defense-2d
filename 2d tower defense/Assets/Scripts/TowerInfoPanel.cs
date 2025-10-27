@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -23,34 +23,28 @@ public class TowerInfoPanel : MonoBehaviour
 
     void Start()
     {
+        txtUpgradeLabel = btnUpgrade ? btnUpgrade.GetComponentInChildren<TMP_Text>(true) : null;
+        txtSellLabel = btnSell ? btnSell.GetComponentInChildren<TMP_Text>(true) : null;
+
+        if (btnUpgrade) btnUpgrade.onClick.AddListener(OnUpgrade);
+        if (btnSell) btnSell.onClick.AddListener(OnSell);
+
         Hide();
-
-        // ✅ Gán label text cho nút
-        txtUpgradeLabel = btnUpgrade.GetComponentInChildren<TMP_Text>();
-        txtSellLabel = btnSell.GetComponentInChildren<TMP_Text>();
-
-        btnUpgrade.onClick.AddListener(OnUpgrade);
-        btnSell.onClick.AddListener(OnSell);
     }
 
     public void Show(Tower tower)
     {
         if (tower == null) return;
 
-        Debug.Log($"[TowerInfoPanel] Show info for {tower.name}");
-
-        // ✅ Bỏ đăng ký cũ (nếu đang xem Tower khác)
         if (currentTower != null)
+        {
             currentTower.onStatsChanged -= UpdateDisplay;
+        }
 
         currentTower = tower;
-
-        // ✅ Đăng ký cập nhật UI mỗi khi Tower thay đổi stats
         currentTower.onStatsChanged += UpdateDisplay;
 
         gameObject.SetActive(true);
-
-        // ✅ Cập nhật toàn bộ thông tin khi mở panel lần đầu
         UpdateDisplay(currentTower);
     }
 
@@ -58,31 +52,37 @@ public class TowerInfoPanel : MonoBehaviour
     {
         if (!t) return;
 
-        txtName.text = t.towerName;
-        txtLevel.text = $"Level: {t.level}";
-        txtDamage.text = $"DMG: {t.damage:F1}";
-        txtFireRate.text = $"ROF: {t.fireRate:F2}/s";
-        txtRange.text = $"Range: {t.range:F1}";
+        if (txtName) txtName.text = t.towerName;
+        if (txtLevel) txtLevel.text = $"Level: {t.level}";
+        if (txtDamage) txtDamage.text = $"DMG: {t.damage:F1}";
+        if (txtFireRate) txtFireRate.text = $"ROF: {t.fireRate:F2}/s";
+        if (txtRange) txtRange.text = $"Range: {t.range:F1}";
 
         int upgradeCost = Mathf.RoundToInt(t.upgradeCost);
         int sellValue = Mathf.RoundToInt(upgradeCost * t.sellPercent);
 
-        // ✅ Text nút Upgrade & Sell chính xác
         if (txtUpgradeLabel) txtUpgradeLabel.text = $"Upgrade ({upgradeCost})";
         if (txtSellLabel) txtSellLabel.text = $"Sell (+{sellValue})";
 
-        // ✅ disable button nếu không đủ tiền
-        if (BuildManager.I != null)
-            btnUpgrade.interactable = BuildManager.I.CanAfford(upgradeCost);
+        if (btnUpgrade)
+        {
+            bool canUpgrade = BuildManager.I == null || BuildManager.I.CanAfford(upgradeCost);
+            btnUpgrade.interactable = canUpgrade;
+        }
     }
 
     public void Hide()
     {
         if (currentTower != null)
+        {
             currentTower.onStatsChanged -= UpdateDisplay;
+        }
 
         currentTower = null;
-        gameObject.SetActive(false);
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void OnUpgrade()
@@ -102,32 +102,39 @@ public class TowerInfoPanel : MonoBehaviour
         }
     }
 
-    // ✅ Ẩn panel khi click ra ngoài
     void Update()
     {
         if (!gameObject.activeSelf)
             return;
 
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        var mouse = Mouse.current;
+        if (mouse == null)
+            return;
+
+        if (!mouse.leftButton.wasPressedThisFrame)
+            return;
+
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        var mainCamera = Camera.main;
+        if (mainCamera == null)
+            return;
+
+        Vector2 world = mainCamera.ScreenToWorldPoint(mouse.position.ReadValue());
+        var hit = Physics2D.OverlapPoint(world);
+
+        if (hit)
         {
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-                return;
-
-            Vector2 world = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            var hit = Physics2D.OverlapPoint(world);
-
-            if (hit)
+            Tower t = hit.GetComponent<Tower>();
+            if (t != null)
             {
-                Tower t = hit.GetComponent<Tower>();
-                if (t != null)
-                {
-                    if (t != currentTower)
-                        Show(t);
-                    return;
-                }
+                if (t != currentTower)
+                    Show(t);
+                return;
             }
-
-            Hide();
         }
+
+        Hide();
     }
 }

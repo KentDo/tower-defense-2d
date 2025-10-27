@@ -1,19 +1,35 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 public static class GameSession
 {
-    // Lưu các chỉ mục câu đã dùng để tránh lặp
-    public static HashSet<int> UsedQuestionIndices = new HashSet<int>();
+    public static readonly HashSet<int> UsedQuestionIndices = new HashSet<int>();
 
-    // Reset khi đã dùng hết
+    private static string lastGameplayScene;
+
     public static void ResetQuestionsIfNeeded(int total)
     {
         if (UsedQuestionIndices.Count >= total)
+        {
             UsedQuestionIndices.Clear();
+        }
     }
 
     public static void ClearAll()
     {
         UsedQuestionIndices.Clear();
+    }
+
+    public static void SetLastGameplayScene(string sceneName)
+    {
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            lastGameplayScene = sceneName;
+        }
+    }
+
+    public static bool TryGetLastGameplayScene(out string sceneName)
+    {
+        sceneName = lastGameplayScene;
+        return !string.IsNullOrEmpty(sceneName);
     }
 }

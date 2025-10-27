@@ -1,27 +1,25 @@
-﻿using UnityEngine;
+﻿// GameManager.cs
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public GameObject quizPrefab; // kéo PanelQuiz prefab vào đây
+    public int gold;
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+        if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
+        else { Destroy(gameObject); return; }
+    }
 
-            // Instantiate QuizManager nếu chưa có
-            if (FindObjectOfType<QuizManager>() == null && quizPrefab != null)
-            {
-                GameObject quizObj = Instantiate(quizPrefab);
-                quizObj.name = "PanelQuiz";
-            }
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+    // Không cần subscribe gì cả
+
+    // Tuỳ chọn: vẫn giữ để gọi ở nơi khác nếu muốn
+    public void AddGold(int amount)
+    {
+        if (amount <= 0) return;
+        gold += amount;
+        var bm = BuildManager.I;
+        if (bm != null) bm.Add(amount);   // đẩy sang BuildManager để HUDCoins nhận onCoinsChanged
     }
 }
