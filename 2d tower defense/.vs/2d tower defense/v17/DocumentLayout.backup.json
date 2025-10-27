@@ -1,90 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\FGU\\2d tower defense\\",
+  "WorkspaceRootPath": "D:\\FGU\\tower-defense-2d\\2d tower defense\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\towerplacer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\towerplacer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|d:\\fgu\\tower-defense-2d\\2d tower defense\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|d:\\fgu\\2d tower defense\\assets\\scripts\\toastitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\toastitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|d:\\fgu\\2d tower defense\\assets\\scripts\\toastmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\toastmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\waveautogenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\waveautogenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\shopselectbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\shopselectbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\startwavebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\startwavebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\hudlives.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\hudlives.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\speedbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\speedbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\pauseresumebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pauseresumebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\hudwave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\hudwave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\hudcoins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\hudcoins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\rangecircle2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rangecircle2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\buildmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\buildmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\tower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|d:\\fgu\\tower-defense-2d\\2d tower defense\\assets\\scripts\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\2d tower defense\\assets\\scripts\\arrowhoming.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\arrowhoming.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\tower-defense-2d\\2d tower defense\\assets\\scripts\\quiz\\quizmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\quiz\\quizmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerView.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\TowerView.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\tower-defense-2d\\2d tower defense\\assets\\scripts\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerWeapon_L1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\TowerWeapon_L1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8EF7253C-C211-2F1B-70B1-432BE2D91A8D}|Assembly-CSharp-Editor.csproj|D:\\FGU\\tower-defense-2d\\2d tower defense\\assets\\editor\\createquizprefab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8EF7253C-C211-2F1B-70B1-432BE2D91A8D}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\editor\\createquizprefab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerCompose.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\TowerCompose.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\tower-defense-2d\\2d tower defense\\assets\\scripts\\quiz\\quizquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\quiz\\quizquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\tower-defense-2d\\2d tower defense\\assets\\scripts\\quiz\\gamesession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\quiz\\gamesession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\tower-defense-2d\\2d tower defense\\assets\\scripts\\lobby\\backtolobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lobby\\backtolobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\tower-defense-2d\\2d tower defense\\assets\\ui\\gameoverui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\ui\\gameoverui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\tower-defense-2d\\2d tower defense\\assets\\scripts\\lobby\\mapselectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lobby\\mapselectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\tower-defense-2d\\2d tower defense\\assets\\scripts\\lobby\\mapselectitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lobby\\mapselectitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|D:\\FGU\\tower-defense-2d\\2d tower defense\\assets\\scripts\\lobby\\mapprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lobby\\mapprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -94,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -102,260 +66,149 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GameManager.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GameManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T02:56:55.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ToastItem.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\ToastItem.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ToastItem.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\ToastItem.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ToastItem.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAIwCoAAAAAAAAAAAAAAA==",
+              "Title": "EnemyController.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\EnemyController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyController.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\EnemyController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyController.cs",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAEwAIBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T04:01:33.667Z",
+              "WhenOpened": "2025-10-26T09:24:51.67Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ToastManager.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\ToastManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ToastManager.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\ToastManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ToastManager.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAIwC4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T04:01:02.987Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WaveAutoGenerator.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\WaveAutoGenerator.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\WaveAutoGenerator.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\WaveAutoGenerator.cs",
-              "RelativeToolTip": "Assets\\Scripts\\WaveAutoGenerator.cs",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAIwL8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T03:51:26.697Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ShopSelectButton.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\ShopSelectButton.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ShopSelectButton.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\ShopSelectButton.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ShopSelectButton.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T03:36:26.323Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "PauseResumeButton.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\PauseResumeButton.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PauseResumeButton.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\PauseResumeButton.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PauseResumeButton.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T11:21:51.999Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SpeedButton.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\SpeedButton.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\SpeedButton.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\SpeedButton.cs",
-              "RelativeToolTip": "Assets\\Scripts\\SpeedButton.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T11:21:44.742Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "StartWaveButton.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\StartWaveButton.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\StartWaveButton.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\StartWaveButton.cs",
-              "RelativeToolTip": "Assets\\Scripts\\StartWaveButton.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T11:19:46.515Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "HUDLives.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\HUDLives.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HUDLives.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\HUDLives.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HUDLives.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T11:18:50.874Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "RangeCircle2D.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\RangeCircle2D.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\RangeCircle2D.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\RangeCircle2D.cs",
-              "RelativeToolTip": "Assets\\Scripts\\RangeCircle2D.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T10:37:11.875Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TowerPlacer.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerPlacer.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TowerPlacer.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerPlacer.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TowerPlacer.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAIAwwJAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T10:35:51.787Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "BuildManager.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\BuildManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\BuildManager.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\BuildManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\BuildManager.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAowDYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T10:12:30.502Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ArrowHoming.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\ArrowHoming.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ArrowHoming.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\ArrowHoming.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ArrowHoming.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwAsAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T12:10:48.402Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "EnemySpawner.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\EnemySpawner.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemySpawner.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\EnemySpawner.cs",
-              "RelativeToolTip": "Assets\\Scripts\\EnemySpawner.cs",
-              "ViewState": "AgIAAPgAAAAAAAAAAAAYwBsBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T12:03:44.871Z"
+              "Title": "CreateQuizPrefab.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Editor\\CreateQuizPrefab.cs",
+              "RelativeDocumentMoniker": "Assets\\Editor\\CreateQuizPrefab.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Editor\\CreateQuizPrefab.cs",
+              "RelativeToolTip": "Assets\\Editor\\CreateQuizPrefab.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAAAIoAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANsSURBVDhP7dNdaFtlGAfw533POUne5DRNbD7apkVaSrdWMxzFQGalG6KysfVG2dVAbXchyNyNiF6Ila5XMpBdKn6AONx0A9N1Y\u002BsgdLA45\u002Ba6xZg2n61tl8bTfJ2Tc5Lz\u002BXqhF0PwSrzb7/4PD3/\u002BD8Bj/xUCAKCU4vRW2pssJ72XMpfw/a37oIEGPrcP/MQv7cntKc/MzMCavBa48OMF99n8WenErhO1/c/s7z7z0xn2SvZKbWVnpQYfgYUppSi1kfI01MZrLat1HliIOXlnjDhIjLAkRjjyjrJXcZVKpS65Kr\u002BvIjWGTfyeYlPCsix/qmnaedM0X99t3\u002B0FAITixbgDdHjz3va9qVwlN4Iwwj18T4uwhP59/XcTAxNzQRI8fi597tWl9aWhTDWT62A7HoyFxl7IVDLOTXHzAUb4c7Wufsnmt/KcitVIvp4PG2DARN9EJcAHvnXb3BWxLUK1VU36iV8BBnacjLNNOAIMYto21lbxOryGjbFRBKhpIavBPcFRBvaB/aHy8IhhGeEBz8D6wcGDFz1OzyeiJC5ywCVIB1nJJrLSYP9gLtgZfLbRbjxVqBVuTO\u002Bd/uzwrsMvFWtFZ7FavEgZ\u002Bk3uZE7Cq5VVWG\u002BsA4MZsGP7z2uttdmhwFBhfGRcGh8Zlw4MHGiPjo4yKqf66mrdIesyGNRwpIW0T5AFtm20EcWUpwbthA8B4S7oAgYxwGIWMIP1u6W7CkLIenQKvYO93dSkc/Or889dL1wHURX3Xc5fnpu9Mdtzp3SHmJb5CsZ4eqx3zMH6unxgIzbQTR0K1QJrt\u002Bx8/Nc4BT\u002BAIAggC7Kxo\u002BzUCSZfh4PhDkERIrc2by33u/sXDw0fOh4vxjuTfySXEEWLAKAzU\u002B9O2fv4viOSJoU3xA0r0BHwhDyhCLFIVNO0aAu3Oqtq9bfok9GMi3GJ283tQqaWWTj14qn5aG9USgmpXwqNwg8WthKpt1IaGwlF9GareVs11KdVQx2SdOnt5fIydXEuAAAwqfm9IivXAEDGAbyAsuga7\u002BD18u2yPvz88BcGbyATTD13Mqf99SkUUGIj4a2IlTey1eyxm7/fdJaaJeAYDkLuEHQ7uxeQDX1w\u002BuXT8qO9/hsMCOjV/qt1B3Z8RSxyFFE0qVnapKzLk5qmTVqs9TGf4Fv/DD72//kTNRatse7TPbcAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-10-26T09:24:48.448Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "LevelManager.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\LevelManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\LevelManager.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\LevelManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\LevelManager.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAkwC4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T11:55:32.998Z"
+              "Title": "GameSession.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quiz\\GameSession.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Quiz\\GameSession.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quiz\\GameSession.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Quiz\\GameSession.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANsSURBVDhP7dNdaFtlGAfw533POUne5DRNbD7apkVaSrdWMxzFQGalG6KysfVG2dVAbXchyNyNiF6Ila5XMpBdKn6AONx0A9N1Y\u002BsgdLA45\u002Ba6xZg2n61tl8bTfJ2Tc5Lz\u002BXqhF0PwSrzb7/4PD3/\u002BD8Bj/xUCAKCU4vRW2pssJ72XMpfw/a37oIEGPrcP/MQv7cntKc/MzMCavBa48OMF99n8WenErhO1/c/s7z7z0xn2SvZKbWVnpQYfgYUppSi1kfI01MZrLat1HliIOXlnjDhIjLAkRjjyjrJXcZVKpS65Kr\u002BvIjWGTfyeYlPCsix/qmnaedM0X99t3\u002B0FAITixbgDdHjz3va9qVwlN4Iwwj18T4uwhP59/XcTAxNzQRI8fi597tWl9aWhTDWT62A7HoyFxl7IVDLOTXHzAUb4c7Wufsnmt/KcitVIvp4PG2DARN9EJcAHvnXb3BWxLUK1VU36iV8BBnacjLNNOAIMYto21lbxOryGjbFRBKhpIavBPcFRBvaB/aHy8IhhGeEBz8D6wcGDFz1OzyeiJC5ywCVIB1nJJrLSYP9gLtgZfLbRbjxVqBVuTO\u002Bd/uzwrsMvFWtFZ7FavEgZ\u002Bk3uZE7Cq5VVWG\u002BsA4MZsGP7z2uttdmhwFBhfGRcGh8Zlw4MHGiPjo4yKqf66mrdIesyGNRwpIW0T5AFtm20EcWUpwbthA8B4S7oAgYxwGIWMIP1u6W7CkLIenQKvYO93dSkc/Or889dL1wHURX3Xc5fnpu9Mdtzp3SHmJb5CsZ4eqx3zMH6unxgIzbQTR0K1QJrt\u002Bx8/Nc4BT\u002BAIAggC7Kxo\u002BzUCSZfh4PhDkERIrc2by33u/sXDw0fOh4vxjuTfySXEEWLAKAzU\u002B9O2fv4viOSJoU3xA0r0BHwhDyhCLFIVNO0aAu3Oqtq9bfok9GMi3GJ283tQqaWWTj14qn5aG9USgmpXwqNwg8WthKpt1IaGwlF9GareVs11KdVQx2SdOnt5fIydXEuAAAwqfm9IivXAEDGAbyAsuga7\u002BD18u2yPvz88BcGbyATTD13Mqf99SkUUGIj4a2IlTey1eyxm7/fdJaaJeAYDkLuEHQ7uxeQDX1w\u002BuXT8qO9/hsMCOjV/qt1B3Z8RSxyFFE0qVnapKzLk5qmTVqs9TGf4Fv/DD72//kTNRatse7TPbcAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-10-26T09:24:48.669Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "HUDCoins.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\HUDCoins.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HUDCoins.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\HUDCoins.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HUDCoins.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "LevelManager.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\LevelManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\LevelManager.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\LevelManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\LevelManager.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAwwF0AAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANsSURBVDhP7dNdaFtlGAfw533POUne5DRNbD7apkVaSrdWMxzFQGalG6KysfVG2dVAbXchyNyNiF6Ila5XMpBdKn6AONx0A9N1Y\u002BsgdLA45\u002Ba6xZg2n61tl8bTfJ2Tc5Lz\u002BXqhF0PwSrzb7/4PD3/\u002BD8Bj/xUCAKCU4vRW2pssJ72XMpfw/a37oIEGPrcP/MQv7cntKc/MzMCavBa48OMF99n8WenErhO1/c/s7z7z0xn2SvZKbWVnpQYfgYUppSi1kfI01MZrLat1HliIOXlnjDhIjLAkRjjyjrJXcZVKpS65Kr\u002BvIjWGTfyeYlPCsix/qmnaedM0X99t3\u002B0FAITixbgDdHjz3va9qVwlN4Iwwj18T4uwhP59/XcTAxNzQRI8fi597tWl9aWhTDWT62A7HoyFxl7IVDLOTXHzAUb4c7Wufsnmt/KcitVIvp4PG2DARN9EJcAHvnXb3BWxLUK1VU36iV8BBnacjLNNOAIMYto21lbxOryGjbFRBKhpIavBPcFRBvaB/aHy8IhhGeEBz8D6wcGDFz1OzyeiJC5ywCVIB1nJJrLSYP9gLtgZfLbRbjxVqBVuTO\u002Bd/uzwrsMvFWtFZ7FavEgZ\u002Bk3uZE7Cq5VVWG\u002BsA4MZsGP7z2uttdmhwFBhfGRcGh8Zlw4MHGiPjo4yKqf66mrdIesyGNRwpIW0T5AFtm20EcWUpwbthA8B4S7oAgYxwGIWMIP1u6W7CkLIenQKvYO93dSkc/Or889dL1wHURX3Xc5fnpu9Mdtzp3SHmJb5CsZ4eqx3zMH6unxgIzbQTR0K1QJrt\u002Bx8/Nc4BT\u002BAIAggC7Kxo\u002BzUCSZfh4PhDkERIrc2by33u/sXDw0fOh4vxjuTfySXEEWLAKAzU\u002B9O2fv4viOSJoU3xA0r0BHwhDyhCLFIVNO0aAu3Oqtq9bfok9GMi3GJ283tQqaWWTj14qn5aG9USgmpXwqNwg8WthKpt1IaGwlF9GareVs11KdVQx2SdOnt5fIydXEuAAAwqfm9IivXAEDGAbyAsuga7\u002BD18u2yPvz88BcGbyATTD13Mqf99SkUUGIj4a2IlTey1eyxm7/fdJaaJeAYDkLuEHQ7uxeQDX1w\u002BuXT8qO9/hsMCOjV/qt1B3Z8RSxyFFE0qVnapKzLk5qmTVqs9TGf4Fv/DD72//kTNRatse7TPbcAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-10-26T09:24:48.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GameOverUI.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\UI\\GameOverUI.cs",
+              "RelativeDocumentMoniker": "Assets\\UI\\GameOverUI.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\UI\\GameOverUI.cs",
+              "RelativeToolTip": "Assets\\UI\\GameOverUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANsSURBVDhP7dNdaFtlGAfw533POUne5DRNbD7apkVaSrdWMxzFQGalG6KysfVG2dVAbXchyNyNiF6Ila5XMpBdKn6AONx0A9N1Y\u002BsgdLA45\u002Ba6xZg2n61tl8bTfJ2Tc5Lz\u002BXqhF0PwSrzb7/4PD3/\u002BD8Bj/xUCAKCU4vRW2pssJ72XMpfw/a37oIEGPrcP/MQv7cntKc/MzMCavBa48OMF99n8WenErhO1/c/s7z7z0xn2SvZKbWVnpQYfgYUppSi1kfI01MZrLat1HliIOXlnjDhIjLAkRjjyjrJXcZVKpS65Kr\u002BvIjWGTfyeYlPCsix/qmnaedM0X99t3\u002B0FAITixbgDdHjz3va9qVwlN4Iwwj18T4uwhP59/XcTAxNzQRI8fi597tWl9aWhTDWT62A7HoyFxl7IVDLOTXHzAUb4c7Wufsnmt/KcitVIvp4PG2DARN9EJcAHvnXb3BWxLUK1VU36iV8BBnacjLNNOAIMYto21lbxOryGjbFRBKhpIavBPcFRBvaB/aHy8IhhGeEBz8D6wcGDFz1OzyeiJC5ywCVIB1nJJrLSYP9gLtgZfLbRbjxVqBVuTO\u002Bd/uzwrsMvFWtFZ7FavEgZ\u002Bk3uZE7Cq5VVWG\u002BsA4MZsGP7z2uttdmhwFBhfGRcGh8Zlw4MHGiPjo4yKqf66mrdIesyGNRwpIW0T5AFtm20EcWUpwbthA8B4S7oAgYxwGIWMIP1u6W7CkLIenQKvYO93dSkc/Or889dL1wHURX3Xc5fnpu9Mdtzp3SHmJb5CsZ4eqx3zMH6unxgIzbQTR0K1QJrt\u002Bx8/Nc4BT\u002BAIAggC7Kxo\u002BzUCSZfh4PhDkERIrc2by33u/sXDw0fOh4vxjuTfySXEEWLAKAzU\u002B9O2fv4viOSJoU3xA0r0BHwhDyhCLFIVNO0aAu3Oqtq9bfok9GMi3GJ283tQqaWWTj14qn5aG9USgmpXwqNwg8WthKpt1IaGwlF9GareVs11KdVQx2SdOnt5fIydXEuAAAwqfm9IivXAEDGAbyAsuga7\u002BD18u2yPvz88BcGbyATTD13Mqf99SkUUGIj4a2IlTey1eyxm7/fdJaaJeAYDkLuEHQ7uxeQDX1w\u002BuXT8qO9/hsMCOjV/qt1B3Z8RSxyFFE0qVnapKzLk5qmTVqs9TGf4Fv/DD72//kTNRatse7TPbcAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-10-26T09:24:48.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "QuizQuestion.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quiz\\QuizQuestion.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Quiz\\QuizQuestion.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quiz\\QuizQuestion.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Quiz\\QuizQuestion.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANsSURBVDhP7dNdaFtlGAfw533POUne5DRNbD7apkVaSrdWMxzFQGalG6KysfVG2dVAbXchyNyNiF6Ila5XMpBdKn6AONx0A9N1Y\u002BsgdLA45\u002Ba6xZg2n61tl8bTfJ2Tc5Lz\u002BXqhF0PwSrzb7/4PD3/\u002BD8Bj/xUCAKCU4vRW2pssJ72XMpfw/a37oIEGPrcP/MQv7cntKc/MzMCavBa48OMF99n8WenErhO1/c/s7z7z0xn2SvZKbWVnpQYfgYUppSi1kfI01MZrLat1HliIOXlnjDhIjLAkRjjyjrJXcZVKpS65Kr\u002BvIjWGTfyeYlPCsix/qmnaedM0X99t3\u002B0FAITixbgDdHjz3va9qVwlN4Iwwj18T4uwhP59/XcTAxNzQRI8fi597tWl9aWhTDWT62A7HoyFxl7IVDLOTXHzAUb4c7Wufsnmt/KcitVIvp4PG2DARN9EJcAHvnXb3BWxLUK1VU36iV8BBnacjLNNOAIMYto21lbxOryGjbFRBKhpIavBPcFRBvaB/aHy8IhhGeEBz8D6wcGDFz1OzyeiJC5ywCVIB1nJJrLSYP9gLtgZfLbRbjxVqBVuTO\u002Bd/uzwrsMvFWtFZ7FavEgZ\u002Bk3uZE7Cq5VVWG\u002BsA4MZsGP7z2uttdmhwFBhfGRcGh8Zlw4MHGiPjo4yKqf66mrdIesyGNRwpIW0T5AFtm20EcWUpwbthA8B4S7oAgYxwGIWMIP1u6W7CkLIenQKvYO93dSkc/Or889dL1wHURX3Xc5fnpu9Mdtzp3SHmJb5CsZ4eqx3zMH6unxgIzbQTR0K1QJrt\u002Bx8/Nc4BT\u002BAIAggC7Kxo\u002BzUCSZfh4PhDkERIrc2by33u/sXDw0fOh4vxjuTfySXEEWLAKAzU\u002B9O2fv4viOSJoU3xA0r0BHwhDyhCLFIVNO0aAu3Oqtq9bfok9GMi3GJ283tQqaWWTj14qn5aG9USgmpXwqNwg8WthKpt1IaGwlF9GareVs11KdVQx2SdOnt5fIydXEuAAAwqfm9IivXAEDGAbyAsuga7\u002BD18u2yPvz88BcGbyATTD13Mqf99SkUUGIj4a2IlTey1eyxm7/fdJaaJeAYDkLuEHQ7uxeQDX1w\u002BuXT8qO9/hsMCOjV/qt1B3Z8RSxyFFE0qVnapKzLk5qmTVqs9TGf4Fv/DD72//kTNRatse7TPbcAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-10-26T09:24:48.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QuizManager.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quiz\\QuizManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Quiz\\QuizManager.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\Quiz\\QuizManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Quiz\\QuizManager.cs",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAcwLQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T11:17:57.558Z"
+              "WhenOpened": "2025-10-26T09:24:48.972Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BackToLobby.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\BackToLobby.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\lobby\\BackToLobby.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\BackToLobby.cs",
+              "RelativeToolTip": "Assets\\Scripts\\lobby\\BackToLobby.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANsSURBVDhP7dNdaFtlGAfw533POUne5DRNbD7apkVaSrdWMxzFQGalG6KysfVG2dVAbXchyNyNiF6Ila5XMpBdKn6AONx0A9N1Y\u002BsgdLA45\u002Ba6xZg2n61tl8bTfJ2Tc5Lz\u002BXqhF0PwSrzb7/4PD3/\u002BD8Bj/xUCAKCU4vRW2pssJ72XMpfw/a37oIEGPrcP/MQv7cntKc/MzMCavBa48OMF99n8WenErhO1/c/s7z7z0xn2SvZKbWVnpQYfgYUppSi1kfI01MZrLat1HliIOXlnjDhIjLAkRjjyjrJXcZVKpS65Kr\u002BvIjWGTfyeYlPCsix/qmnaedM0X99t3\u002B0FAITixbgDdHjz3va9qVwlN4Iwwj18T4uwhP59/XcTAxNzQRI8fi597tWl9aWhTDWT62A7HoyFxl7IVDLOTXHzAUb4c7Wufsnmt/KcitVIvp4PG2DARN9EJcAHvnXb3BWxLUK1VU36iV8BBnacjLNNOAIMYto21lbxOryGjbFRBKhpIavBPcFRBvaB/aHy8IhhGeEBz8D6wcGDFz1OzyeiJC5ywCVIB1nJJrLSYP9gLtgZfLbRbjxVqBVuTO\u002Bd/uzwrsMvFWtFZ7FavEgZ\u002Bk3uZE7Cq5VVWG\u002BsA4MZsGP7z2uttdmhwFBhfGRcGh8Zlw4MHGiPjo4yKqf66mrdIesyGNRwpIW0T5AFtm20EcWUpwbthA8B4S7oAgYxwGIWMIP1u6W7CkLIenQKvYO93dSkc/Or889dL1wHURX3Xc5fnpu9Mdtzp3SHmJb5CsZ4eqx3zMH6unxgIzbQTR0K1QJrt\u002Bx8/Nc4BT\u002BAIAggC7Kxo\u002BzUCSZfh4PhDkERIrc2by33u/sXDw0fOh4vxjuTfySXEEWLAKAzU\u002B9O2fv4viOSJoU3xA0r0BHwhDyhCLFIVNO0aAu3Oqtq9bfok9GMi3GJ283tQqaWWTj14qn5aG9USgmpXwqNwg8WthKpt1IaGwlF9GareVs11KdVQx2SdOnt5fIydXEuAAAwqfm9IivXAEDGAbyAsuga7\u002BD18u2yPvz88BcGbyATTD13Mqf99SkUUGIj4a2IlTey1eyxm7/fdJaaJeAYDkLuEHQ7uxeQDX1w\u002BuXT8qO9/hsMCOjV/qt1B3Z8RSxyFFE0qVnapKzLk5qmTVqs9TGf4Fv/DD72//kTNRatse7TPbcAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-10-26T09:24:49.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MapSelectController.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\MapSelectController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\lobby\\MapSelectController.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\MapSelectController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\lobby\\MapSelectController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAwwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T09:24:49.188Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "HUDWave.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\HUDWave.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HUDWave.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\HUDWave.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HUDWave.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Title": "MapSelectItem.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\MapSelectItem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\lobby\\MapSelectItem.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\MapSelectItem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\lobby\\MapSelectItem.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAwwCAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T11:18:49.146Z"
+              "WhenOpened": "2025-10-26T09:24:49.189Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "TowerWeapon_L1.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerWeapon_L1.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TowerWeapon_L1.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerWeapon_L1.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TowerWeapon_L1.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAuwEsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "MapProgress.cs",
+              "DocumentMoniker": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\MapProgress.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\lobby\\MapProgress.cs",
+              "ToolTip": "D:\\FGU\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\MapProgress.cs",
+              "RelativeToolTip": "Assets\\Scripts\\lobby\\MapProgress.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAwwCUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T11:58:32.05Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "TowerView.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerView.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TowerView.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerView.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TowerView.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T11:58:31.297Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "TowerCompose.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerCompose.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TowerCompose.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\TowerCompose.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TowerCompose.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAmwAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T11:58:30.379Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Tower.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\Tower.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Tower.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\Tower.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Tower.cs",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAqwL4AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T11:58:29.187Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "EnemyController.cs",
-              "DocumentMoniker": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\EnemyController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyController.cs",
-              "ToolTip": "D:\\FGU\\2d tower defense\\Assets\\Scripts\\EnemyController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\EnemyController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGEAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T11:51:57.361Z"
+              "WhenOpened": "2025-10-26T09:24:49.19Z"
             }
           ]
         }
