@@ -170,5 +170,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Arrow
   speed: 12
-  damage: 1
+  turnRateDeg: 720
   lifeTime: 5
+  damage: 10
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 0

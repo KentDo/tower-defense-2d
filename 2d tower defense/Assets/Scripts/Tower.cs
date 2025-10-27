@@ -1,13 +1,23 @@
 ﻿using UnityEngine;
+using System;
 
 public class Tower : MonoBehaviour
 {
+    [Header("Info & Economy")]
+    public string towerName = "Archer";
+    public int startCoinsCost = 50;         // giá mua (do BuildManager trừ khi đặt)
+    public int upgradeCost = 50;            // giá nâng cấp hiện tại
+    [Range(0f, 1f)] public float sellPercent = 0.6f;
+
+    public event Action<Tower> onStatsChanged; // Panel UI subscribe
+
     [Header("Weapon")]
     public Transform muzzle;
     public GameObject projectile;
     public Animator weaponAnimator;
     public float fireRate = 1.2f;
     public float range = 4f;
+    public float damage = 50f;              // 50 damage = 2 phát giết quái 100 HP
     public float turnSpeed = 360f;
     public LayerMask enemyMask;
 
@@ -23,9 +33,16 @@ public class Tower : MonoBehaviour
     public Sprite[] weaponLevels;
     public Vector2[] weaponOffsets;
 
+    [Header("Level & Scaling")]
     [Range(0, 2)] public int startLevel = 0;
-    int level;
-    public int Level => level;
+    public int level { get; private set; } = 0;  // API: public get
+    // Hệ số tăng theo mỗi cấp (có thể chỉnh tùy loại trụ)
+    public float dmgPerLevelMul = 1.25f;
+    public float firePerLevelMul = 1.10f;
+    public float rangePerLevelAdd = 0.25f;
+    public float upgradeCostMul = 1.40f;
+
+    public int Level => level; // giữ alias cũ nếu nơi khác đang gọi
 
     void Awake()
     {
@@ -44,7 +61,7 @@ public class Tower : MonoBehaviour
         if (weaponAnimator) weaponAnimator.SetBool("HasTarget", inRange);
         if (!inRange) return;
 
-        // xoay nòng (WeaponPivot) thay vì xoay root
+        // xoay nòng (WeaponPivot) thay vì root
         Vector2 aim = (Vector2)target.position - (Vector2)transform.position;
         float ang = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
         Quaternion to = Quaternion.AngleAxis(ang - 90f, Vector3.forward);
@@ -78,12 +95,18 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
-        if (!target) return;
-        // Spawn đạn theo hướng WeaponPivot
+        if (!target || !projectile || !muzzle || !weaponPivot) return;
+
         var go = Instantiate(projectile, muzzle.position, weaponPivot.rotation);
 
+        // Nếu projectile hỗ trợ damage, truyền vào
         var homing = go.GetComponent<ArrowHoming>();
-        if (homing) homing.Init(target, enemyMask);
+        if (homing)
+        {
+            homing.Init(target, enemyMask);
+            // Set damage từ tower (50 cho 2 phát giết quái 100 HP)
+            homing.damage = Mathf.RoundToInt(damage);
+        }
 
         if (weaponAnimator) weaponAnimator.SetTrigger("Shoot");
     }
@@ -94,29 +117,87 @@ public class Tower : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
     }
 
-    public void SetLevel(int lv)
+    // ========== API NÂNG CẤP/BÁN (Chuẩn hóa) ==========
+    public bool Upgrade()
     {
-        if (baseLevels == null || baseLevels.Length == 0 ||
-            weaponLevels == null || weaponLevels.Length == 0)
-        {
-            Debug.LogWarning("[Tower] Chưa gán đủ sprite levels!");
-            return;
-        }
+        var bm = BuildManager.I;
+        if (!bm) { Debug.LogWarning("[Tower] BuildManager not found."); return false; }
+        if (!bm.Spend(upgradeCost)) return false;
 
-        level = Mathf.Clamp(lv, 0, Mathf.Min(baseLevels.Length, weaponLevels.Length) - 1);
-        if (baseSR) baseSR.sprite = baseLevels[level];
-        if (weaponSR) weaponSR.sprite = weaponLevels[level];
-        if (weaponPivot && weaponOffsets != null && level < weaponOffsets.Length)
-            weaponPivot.localPosition = weaponOffsets[level];
+        level++;
+        damage *= dmgPerLevelMul;
+        fireRate *= firePerLevelMul;
+        range += rangePerLevelAdd;
+        upgradeCost = Mathf.RoundToInt(upgradeCost * upgradeCostMul);
+
+        // Cập nhật visual theo level
+        ApplyLevelSprites();
+
+        onStatsChanged?.Invoke(this);
+        return true;
     }
 
-    public void Upgrade() => SetLevel(level + 1);
+    public int Sell()
+    {
+        int refund = Mathf.RoundToInt(upgradeCost * sellPercent);
+        BuildManager.I?.Add(refund);
+        Destroy(gameObject);
+        return refund;
+    }
+
+    // ========== Level & Sprites ==========
+    public void SetLevel(int lv)
+    {
+        // clamp theo số sprite (nếu bạn có ít sprite hơn số level thực)
+        int maxSpriteLevel = Mathf.Min(
+            baseLevels != null ? baseLevels.Length - 1 : 0,
+            weaponLevels != null ? weaponLevels.Length - 1 : 0
+        );
+        level = Mathf.Clamp(lv, 0, Mathf.Max(0, maxSpriteLevel));
+
+        ApplyLevelSprites();
+
+        // reset chỉ số theo level khởi điểm (nếu muốn scale ngay từ Start)
+        // *Giữ nguyên fireRate/range/damage bạn set trong Inspector cho level 0*
+        for (int i = 0; i < level; i++)
+        {
+            damage *= dmgPerLevelMul;
+            fireRate *= firePerLevelMul;
+            range += rangePerLevelAdd;
+            upgradeCost = Mathf.RoundToInt(upgradeCost * upgradeCostMul);
+        }
+    }
+
+    void ApplyLevelSprites()
+    {
+        if (baseSR && baseLevels != null && baseLevels.Length > 0)
+        {
+            int i = Mathf.Clamp(level, 0, baseLevels.Length - 1);
+            baseSR.sprite = baseLevels[i];
+        }
+        if (weaponSR && weaponLevels != null && weaponLevels.Length > 0)
+        {
+            int i = Mathf.Clamp(level, 0, weaponLevels.Length - 1);
+            weaponSR.sprite = weaponLevels[i];
+        }
+        if (weaponPivot && weaponOffsets != null && weaponOffsets.Length > 0)
+        {
+            int i = Mathf.Clamp(level, 0, weaponOffsets.Length - 1);
+            weaponPivot.localPosition = weaponOffsets[i];
+        }
+    }
 
 #if UNITY_EDITOR
     void OnValidate()
     {
-        if (!Application.isPlaying && baseSR && weaponSR && baseLevels.Length > 0 && weaponLevels.Length > 0)
-            SetLevel(startLevel);
+        if (!Application.isPlaying)
+        {
+            // preview sprite theo startLevel trên Editor
+            int prev = level;
+            level = startLevel;
+            ApplyLevelSprites();
+            level = prev;
+        }
     }
 #endif
 }
