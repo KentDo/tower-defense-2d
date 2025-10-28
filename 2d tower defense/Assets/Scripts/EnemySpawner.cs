@@ -41,6 +41,9 @@ public class EnemySpawner : MonoBehaviour
     public bool loop = false;
     public float loopDelay = 4f;
 
+    [Header("Reward")]
+    public int waveCompletionReward = 20; // <== BỔ SUNG BIẾN REWARD
+
     [Header("Debug")]
     public int currentWaveIndex = -1;  // -1 = idle
     public int alive = 0;
@@ -146,6 +149,18 @@ public class EnemySpawner : MonoBehaviour
             // Chờ clear (alive == 0)
             yield return new WaitUntil(() => alive <= 0);
 
+            // === BỔ SUNG: CỘNG THƯỞNG SAU KHI CLEAR WAVE ===
+            if (waveCompletionReward > 0)
+            {
+                // Nếu đã có hệ thống tiền tệ/coin:
+                // PlayerMoney.Instance.AddMoney(waveCompletionReward);
+                // Hoặc cộng biến nào đó nhóm bạn đang dùng:
+                // GameManager.coin += waveCompletionReward;
+                // Nếu chưa có, chỉ cần log:
+                BuildManager.I.Add(waveCompletionReward);
+                Debug.Log($"[Spawner] Đã thưởng {waveCompletionReward} coins cho người chơi sau wave {currentWaveIndex+1}!");
+            }
+
             // Delay giữa waves — có thể bị skip nếu người chơi bấm Next
             if (!_skipInterWaveDelay && wave.nextWaveDelay > 0f)
                 yield return new WaitForSeconds(wave.nextWaveDelay);
@@ -197,17 +212,19 @@ public class EnemySpawner : MonoBehaviour
     {
         var go = Instantiate(prefab, where, Quaternion.identity);
 
+        // Lấy controller để gán path (nhiều script di chuyển cần)
         var ec = go.GetComponent<EnemyController>();
         if (ec)
         {
-            ec.path = levelManager;
+            ec.path = levelManager; // gán lại path
 
-            // Scale máu theo wave hiện tại
-            if (currentWaveIndex >= 0 && currentWaveIndex < TotalWaves)
+            // Scale máu theo wave hiện tại thông qua Health
+            var h = go.GetComponent<Health>();
+            if (h != null && currentWaveIndex >= 0 && currentWaveIndex < TotalWaves)
             {
                 float mul = Mathf.Max(0.01f, waves[currentWaveIndex].hpMultiplier);
-                int scaled = Mathf.RoundToInt(ec.MaxHP * mul);
-                ec.SetMaxHP(Mathf.Max(1, scaled));
+                int scaled = Mathf.RoundToInt(h.Max * mul);
+                h.SetMax(Mathf.Max(1, scaled), refill: true);
             }
         }
 
@@ -269,10 +286,15 @@ public class EnemyLifecycleRelay : MonoBehaviour
     public void Init(EnemySpawner s)
     {
         spawner = s;
-        var ec = GetComponent<EnemyController>();
-        if (ec != null)
+
+        // Đăng ký nghe từ Health.onDied (đúng theo kiến trúc dùng Health)
+        var h = GetComponent<Health>();
+        if (h != null)
         {
-            ec.onDeath += _ => { if (spawner) spawner.NotifyEnemyRemoved(this); };
+            h.onDied += _ =>
+            {
+                if (spawner) spawner.NotifyEnemyRemoved(this);
+            };
         }
     }
 

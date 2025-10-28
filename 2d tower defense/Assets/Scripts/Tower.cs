@@ -17,7 +17,7 @@ public class Tower : MonoBehaviour
     public Animator weaponAnimator;
     public float fireRate = 1.2f;
     public float range = 4f;
-    public float damage = 1f;               // thêm: damage cơ bản (nếu projectile đọc)
+    public float damage = 50f;              // 50 damage = 2 phát giết quái 100 HP
     public float turnSpeed = 360f;
     public LayerMask enemyMask;
 
@@ -43,6 +43,17 @@ public class Tower : MonoBehaviour
     public float upgradeCostMul = 1.40f;
 
     public int Level => level; // giữ alias cũ nếu nơi khác đang gọi
+                               // cấp tối đa tính theo số sprite base có sẵn
+    public int maxLevel
+    {
+        get
+        {
+            int baseCount = baseLevels != null ? baseLevels.Length : 0;
+            int weaponCount = weaponLevels != null ? weaponLevels.Length : 0;
+            return Mathf.Max(baseCount, weaponCount) - 1;
+        }
+    }
+
 
     void Awake()
     {
@@ -104,8 +115,8 @@ public class Tower : MonoBehaviour
         if (homing)
         {
             homing.Init(target, enemyMask);
-            // Nếu ArrowHoming có field damage, set thêm:
-            // homing.damage = Mathf.RoundToInt(damage);
+            // Set damage từ tower (50 cho 2 phát giết quái 100 HP)
+            homing.damage = Mathf.RoundToInt(damage);
         }
 
         if (weaponAnimator) weaponAnimator.SetTrigger("Shoot");
@@ -200,4 +211,17 @@ public class Tower : MonoBehaviour
         }
     }
 #endif
+
+
+    void OnMouseDown()
+    {
+        // Khi người chơi click vào Tower trong game, gọi UI hiển thị lên
+        if (TowerUIManager.Instance != null)
+        {
+            TowerUIManager.Instance.Show(this);
+        }
+    }
+
+
+
 }

@@ -10,7 +10,7 @@ public class ArrowHoming : MonoBehaviour
     public float lifeTime = 5f;
 
     [Header("Hit")]
-    public int damage = 1;
+    public int damage = 50;  // 2 phát đạn = 100 damage để giết quái có 100 HP
     public LayerMask enemyMask;
 
     Rigidbody2D rb;

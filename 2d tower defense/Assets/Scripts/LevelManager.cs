@@ -1,5 +1,7 @@
-﻿using UnityEngine;
-using System;   // <-- cần cho Action<>
+using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -8,50 +10,98 @@ public class LevelManager : MonoBehaviour
     [Header("Game State")]
     public int lives = 20;
 
-    // === HUD subscribe vào đây ===
     public event Action<int> onLivesChanged;
 
     [Header("Path Settings")]
     public Transform[] waypoints;
 
+    private bool isGameOverTriggered;
+    private bool isInvulnerable;
+
     void Awake()
     {
-        if (Instance && Instance != this) { Destroy(gameObject); return; }
+        if (Instance && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 
     void Start()
     {
-        // bắn event lần đầu để HUD hiển thị đúng ngay khi vào game
+        GameSession.SetLastGameplayScene(SceneManager.GetActiveScene().name);
         onLivesChanged?.Invoke(lives);
     }
 
-    // ========== PATH ==========
     public int PathCount => waypoints?.Length ?? 0;
-    public Transform GetPathPoint(int i) => (i >= 0 && i < PathCount) ? waypoints[i] : null;
 
-    // ========== BASE DAMAGE ==========
+    public Transform GetPathPoint(int index)
+    {
+        return (index >= 0 && index < PathCount) ? waypoints[index] : null;
+    }
+
     public void SetLives(int value)
     {
+        if (isGameOverTriggered) return;
+
         lives = Mathf.Max(0, value);
         onLivesChanged?.Invoke(lives);
+
         if (lives <= 0)
         {
-            Debug.Log("Game Over");
-            // TODO: show UI / reload scene
+            isGameOverTriggered = true;
+            var quiz = FindObjectOfType<QuizManager>();
+            if (quiz != null)
+            {
+                quiz.ShowQuiz();
+            }
+            else
+            {
+                Debug.LogError("[LevelManager] QuizManager not found in scene.");
+            }
         }
     }
 
     public void DamageBase(int amount)
     {
+        if (isInvulnerable) return;
         SetLives(lives - Mathf.Abs(amount));
     }
 
-    // ========== ENDPOINT ==========
     public void OnEnemyReachEnd(GameObject enemy, int damage = 1)
     {
         DamageBase(damage);
         if (enemy) Destroy(enemy);
+    }
+
+    public void RevivePlayer(int extraLives = 1)
+    {
+        isGameOverTriggered = false;
+        SetLives(lives + Mathf.Max(0, extraLives));
+    }
+
+    public void ActivateInvulnerability(float duration)
+    {
+        if (!isInvulnerable)
+        {
+            StartCoroutine(InvulnerabilityCoroutine(duration));
+        }
+    }
+
+    private IEnumerator InvulnerabilityCoroutine(float duration)
+    {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(duration);
+        isInvulnerable = false;
     }
 }

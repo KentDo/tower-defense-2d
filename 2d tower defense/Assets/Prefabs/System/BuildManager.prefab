@@ -44,9 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeda54241797f1a4f958edf3b27826d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildManager
+  coins: 200
   towers:
   - name: Arrow_Tower
     prefab: {fileID: 4864971164970055308, guid: 7d8b44d6f0339a141b30a849e2aedc02, type: 3}
     cost: 10
     placeRadius: 0.45
-  coins: 200
+  - name: Arrow_Tower
+    prefab: {fileID: -2253911629886400664, guid: 57fbf00068511a040a3474cc426f3eb8, type: 3}
+    cost: 20
+    placeRadius: 0.45

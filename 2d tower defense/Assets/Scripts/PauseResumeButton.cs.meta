@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: c7088cda2781d14438ccc73c91a9384f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - icon: {instanceID: 0}
+  - pauseSprite: {fileID: 21300000, guid: 189774240e23ac34aa7257ee986257ab, type: 3}
+  - resumeSprite: {fileID: 21300000, guid: b670f5d4859d46746a6f50ee5f846299, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
