@@ -10207,11 +10207,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4204064696776977495, guid: 7d8b44d6f0339a141b30a849e2aedc02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.11
+      value: -1.76
       objectReference: {fileID: 0}
     - target: {fileID: 4204064696776977495, guid: 7d8b44d6f0339a141b30a849e2aedc02, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.33
+      value: -4.07
       objectReference: {fileID: 0}
     - target: {fileID: 4204064696776977495, guid: 7d8b44d6f0339a141b30a849e2aedc02, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10249,6 +10249,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7762449479343044343, guid: 7d8b44d6f0339a141b30a849e2aedc02, type: 3}
+      propertyPath: weaponAnimator
+      value: 
+      objectReference: {fileID: 1451114107}
+    - target: {fileID: 8950484074638605324, guid: 7d8b44d6f0339a141b30a849e2aedc02, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 06d7603a3c5f3b14fb2142c1964bc636, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10402,6 +10410,11 @@ CanvasRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4675512129438109416, guid: 8668e93665829b740a62a4f0bf6db1ac, type: 3}
   m_PrefabInstance: {fileID: 1083757428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1451114107 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8950484074638605324, guid: 7d8b44d6f0339a141b30a849e2aedc02, type: 3}
+  m_PrefabInstance: {fileID: 1357454129}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1500975706 stripped
 MonoBehaviour:
