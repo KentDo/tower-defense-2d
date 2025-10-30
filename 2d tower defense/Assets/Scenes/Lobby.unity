@@ -2953,12 +2953,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a775a12936999f848930e9b81173bc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LobbyUI
+  btnPlay: {fileID: 0}
   btnContinue: {fileID: 2128595037}
-  btnReplay: {fileID: 1848927959}
   btnQuit: {fileID: 268778763}
   btnSettings: {fileID: 209296418}
   settingsPanel: {fileID: 864877570}
   defaultFirstLevel: Map1
+  mapSelectScene: MapSelect
 --- !u!1 &1311645490
 GameObject:
   m_ObjectHideFlags: 0
@@ -3351,8 +3352,9 @@ GameObject:
   - component: {fileID: 1848927961}
   - component: {fileID: 1848927960}
   - component: {fileID: 1848927959}
+  - component: {fileID: 1848927962}
   m_Layer: 5
-  m_Name: BtnReplay
+  m_Name: BtnPlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3421,7 +3423,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1848927960}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1848927962}
+        m_TargetAssemblyTypeName: LobbyPlayButton, Assembly-CSharp
+        m_MethodName: OnPlayClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1848927960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3460,6 +3474,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848927957}
   m_CullTransparentMesh: 1
+--- !u!114 &1848927962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848927957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7138b501a3cc7449cb27c7f1c53a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LobbyPlayButton
+  mapSelectSceneName: MapSelect
 --- !u!1 &1915824579
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 public class LobbyUI : MonoBehaviour
 {
     [Header("Buttons")]
+    public Button btnPlay;       // NEW
     public Button btnContinue;
-    public Button btnReplay;
     public Button btnQuit;
     public Button btnSettings;
 
@@ -14,13 +14,15 @@ public class LobbyUI : MonoBehaviour
     public GameObject settingsPanel;
 
     [Header("Config")]
-    [Tooltip("Tên level mặc định nếu chưa có save")]
-    public string defaultFirstLevel = "Level1";
+    [Tooltip("Tên level mặc định nếu chưa có save (dùng cho Continue khi chưa có save)")]
+    public string defaultFirstLevel = "Map1";
+    [Tooltip("Tên scene chọn map")]
+    public string mapSelectScene = "MapSelect";   // NEW
 
     private void Awake()
     {
+        if (btnPlay)     btnPlay.onClick.AddListener(OnPlay);           // NEW
         if (btnContinue) btnContinue.onClick.AddListener(OnContinue);
-        if (btnReplay)   btnReplay.onClick.AddListener(OnReplay);
         if (btnQuit)     btnQuit.onClick.AddListener(OnQuit);
         if (btnSettings) btnSettings.onClick.AddListener(() => ToggleSettings(true));
 
@@ -29,21 +31,22 @@ public class LobbyUI : MonoBehaviour
 
     private void Start()
     {
-        if (btnContinue)
-            btnContinue.interactable = SaveSystem.HasSave;
+        if (btnContinue) btnContinue.interactable = SaveSystem.HasSave;
     }
 
+    // === PLAY -> MapSelect ===
+    private void OnPlay()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(mapSelectScene);
+    }
+
+    // === CONTINUE (vào save gần nhất, nếu chưa có thì vào defaultFirstLevel) ===
     private void OnContinue()
     {
         string level = SaveSystem.HasSave ? SaveSystem.GetLastLevel(defaultFirstLevel)
                                           : defaultFirstLevel;
         SceneManager.LoadScene(level);
-    }
-
-    private void OnReplay()
-    {
-        SaveSystem.ClearSave();
-        SceneManager.LoadScene(defaultFirstLevel);
     }
 
     private void OnQuit()
@@ -59,9 +62,5 @@ public class LobbyUI : MonoBehaviour
     {
         if (settingsPanel) settingsPanel.SetActive(show);
     }
-
-    public void OnCloseSettings()
-    {
-        ToggleSettings(false);
-    }
+    public void OnCloseSettings() => ToggleSettings(false);
 }
