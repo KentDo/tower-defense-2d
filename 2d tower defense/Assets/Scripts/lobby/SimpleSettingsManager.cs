@@ -7,109 +7,76 @@ public class SimpleSettingsManager : MonoBehaviour
     [Header("UI")]
     public Toggle toggleFullscreen;
     public Toggle toggleVSync;
-    public TMP_Dropdown dropdownDifficulty; // 0=Easy,1=Normal,2=Hard
+    public TMP_Dropdown dropdownDifficulty;
 
-    // PlayerPrefs keys
-    private const string KEY_FULLSCREEN = "opt_fullscreen";
-    private const string KEY_VSYNC      = "opt_vsync";
-    private const string KEY_DIFFICULTY = "opt_difficulty";
+    // Bạn có thể dùng giá trị này ở game (ví dụ scale HP/tiền)
+    public static int DifficultyIndex { get; private set; } = 1; // 0=Easy,1=Normal,2=Hard
 
-    private void OnEnable()
+    const string KEY_FS = "opt_fullscreen";
+    const string KEY_VS = "opt_vsync";
+    const string KEY_DF = "opt_difficulty";
+
+    void Awake()
     {
-        // Load saved values (mặc định: fullscreen ON, vsync ON, difficulty = Normal)
-        bool fs   = PlayerPrefs.GetInt(KEY_FULLSCREEN, 1) == 1;
-        bool vs   = PlayerPrefs.GetInt(KEY_VSYNC, 1) == 1;
-        int  diff = PlayerPrefs.GetInt(KEY_DIFFICULTY, 1);
+        // Gán callback UI
+        if (toggleFullscreen) toggleFullscreen.onValueChanged.AddListener(_ => ApplyFullscreen());
+        if (toggleVSync) toggleVSync.onValueChanged.AddListener(_ => ApplyVSync());
+        if (dropdownDifficulty) dropdownDifficulty.onValueChanged.AddListener(_ => ApplyDifficulty());
+    }
+
+    public void LoadSettings()
+    {
+        bool fs = PlayerPrefs.GetInt(KEY_FS, Screen.fullScreen ? 1 : 0) == 1;
+        bool vs = PlayerPrefs.GetInt(KEY_VS, QualitySettings.vSyncCount > 0 ? 1 : 0) == 1;
+        int df = PlayerPrefs.GetInt(KEY_DF, 1);
 
         if (toggleFullscreen) toggleFullscreen.isOn = fs;
-        if (toggleVSync)      toggleVSync.isOn      = vs;
-
+        if (toggleVSync) toggleVSync.isOn = vs;
         if (dropdownDifficulty)
         {
-            dropdownDifficulty.value = Mathf.Clamp(
-                diff, 0, Mathf.Max(0, dropdownDifficulty.options.Count - 1)
-            );
-            dropdownDifficulty.RefreshShownValue();
+            df = Mathf.Clamp(df, 0, 2);
+            dropdownDifficulty.value = df;
         }
 
-        // Apply to runtime
-        ApplyFullscreen(fs);
-        ApplyVSync(vs);
-        ApplyDifficulty(diff);
-
-        // Hook listeners
-        if (toggleFullscreen) toggleFullscreen.onValueChanged.AddListener(SetFullscreen);
-        if (toggleVSync)      toggleVSync.onValueChanged.AddListener(SetVSync);
-        if (dropdownDifficulty) dropdownDifficulty.onValueChanged.AddListener(SetDifficulty);
+        ApplyAll();
     }
 
-    private void OnDisable()
+    public void ApplyAll()
     {
-        // Unhook để tránh double-listener khi bật/tắt panel nhiều lần
-        if (toggleFullscreen) toggleFullscreen.onValueChanged.RemoveListener(SetFullscreen);
-        if (toggleVSync)      toggleVSync.onValueChanged.RemoveListener(SetVSync);
-        if (dropdownDifficulty) dropdownDifficulty.onValueChanged.RemoveListener(SetDifficulty);
+        ApplyFullscreen();
+        ApplyVSync();
+        ApplyDifficulty();
     }
 
-    // === Setters (ghi PlayerPrefs + Apply) ===
-    public void SetFullscreen(bool on)
+    void ApplyFullscreen()
     {
-        PlayerPrefs.SetInt(KEY_FULLSCREEN, on ? 1 : 0);
+        bool fs = toggleFullscreen ? toggleFullscreen.isOn : Screen.fullScreen;
+        Screen.fullScreen = fs;
+        PlayerPrefs.SetInt(KEY_FS, fs ? 1 : 0);
         PlayerPrefs.Save();
-        ApplyFullscreen(on);
     }
 
-    public void SetVSync(bool on)
+    void ApplyVSync()
     {
-        PlayerPrefs.SetInt(KEY_VSYNC, on ? 1 : 0);
+        bool vs = toggleVSync ? toggleVSync.isOn : (QualitySettings.vSyncCount > 0);
+        QualitySettings.vSyncCount = vs ? 1 : 0;
+        PlayerPrefs.SetInt(KEY_VS, vs ? 1 : 0);
         PlayerPrefs.Save();
-        ApplyVSync(on);
     }
 
-    public void SetDifficulty(int idx)
+    void ApplyDifficulty()
     {
-        PlayerPrefs.SetInt(KEY_DIFFICULTY, idx);
+        int df = dropdownDifficulty ? dropdownDifficulty.value : 1;
+        DifficultyIndex = Mathf.Clamp(df, 0, 2);
+        PlayerPrefs.SetInt(KEY_DF, DifficultyIndex);
         PlayerPrefs.Save();
-        ApplyDifficulty(idx);
-    }
 
-    // === Apply to runtime ===
-    private void ApplyFullscreen(bool on)
-    {
-        Screen.fullScreen = on;
-    }
-
-    private void ApplyVSync(bool on)
-    {
-        QualitySettings.vSyncCount = on ? 1 : 0;
-    }
-
-    private void ApplyDifficulty(int idx)
-    {
-        // Đọc lại ở gameplay: PlayerPrefs.GetInt("opt_difficulty", 1);
-        // 0=Easy, 1=Normal, 2=Hard — tuỳ bạn map sang máu quái/coin start...
-    }
-
-    // Gán vào nút "Reset"
-    public void ResetDefaults()
-    {
-        // Defaults: Fullscreen ON, VSync ON, Difficulty = Normal
-        if (toggleFullscreen) toggleFullscreen.isOn = true;
-        if (toggleVSync)      toggleVSync.isOn      = true;
-
-        if (dropdownDifficulty)
+        // Debug ví dụ: bạn có thể map sang multiplier HP/tiền ở nơi khác
+        switch (DifficultyIndex)
         {
-            dropdownDifficulty.value = 1; // Normal
-            dropdownDifficulty.RefreshShownValue();
+            case 0: Debug.Log("[Settings] Difficulty set: 0 (Easy)"); break;
+            case 1: Debug.Log("[Settings] Difficulty set: 1 (Normal)"); break;
+            case 2: Debug.Log("[Settings] Difficulty set: 2 (Hard)"); break;
         }
-
-        PlayerPrefs.SetInt(KEY_FULLSCREEN, 1);
-        PlayerPrefs.SetInt(KEY_VSYNC, 1);
-        PlayerPrefs.SetInt(KEY_DIFFICULTY, 1);
-        PlayerPrefs.Save();
-
-        ApplyFullscreen(true);
-        ApplyVSync(true);
-        ApplyDifficulty(1);
     }
 }
