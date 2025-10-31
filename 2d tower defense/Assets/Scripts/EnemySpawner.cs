@@ -171,6 +171,8 @@ public class EnemySpawner : MonoBehaviour
         currentWaveIndex = -1;
         onAllWavesFinished?.Invoke();
         Debug.Log("[Spawner] All waves finished.");
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VictoryScene");
     }
 
     // ========= Legacy single-wave (giữ cho dự án cũ) =========
