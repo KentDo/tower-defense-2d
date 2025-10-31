@@ -7,27 +7,31 @@ public class SpeedButton : MonoBehaviour
     public Sprite speed1Icon;
     public Sprite speed2Icon;
     public Sprite speed3Icon;
-    private int curSpeed = 1;
 
-    public void OnClickToggleSpeed()
-    {
-        curSpeed = curSpeed == 3 ? 1 : curSpeed + 1;
-        Time.timeScale = curSpeed;
-        UpdateIcon();
-    }
+    int curIndex = 0;            // 0→x1, 1→x2, 2→x3
+    readonly float[] speeds = { 1f, 2f, 3f };
 
     void Start()
     {
-        curSpeed = 1;
-        Time.timeScale = 1f;
+        // đọc speed hiện tại để icon khớp (mặc định x1 nếu ngoài [1..3])
+        float s = Mathf.Clamp(Time.timeScale, 1f, 3f);
+        curIndex = (Mathf.Approximately(s, 2f) ? 1 :
+                   (s > 2.5f ? 2 : 0));
+        UpdateIcon();
+    }
+
+    public void OnClickToggleSpeed()
+    {
+        curIndex = (curIndex + 1) % speeds.Length;
+        Time.timeScale = speeds[curIndex];
         UpdateIcon();
     }
 
     void UpdateIcon()
     {
-        if (icon == null) return;
-        if (curSpeed == 1) icon.sprite = speed1Icon;
-        else if (curSpeed == 2) icon.sprite = speed2Icon;
-        else if (curSpeed == 3) icon.sprite = speed3Icon;
+        if (!icon) return;
+        icon.sprite = (curIndex == 0) ? speed1Icon
+                   : (curIndex == 1) ? speed2Icon
+                   : speed3Icon;
     }
 }

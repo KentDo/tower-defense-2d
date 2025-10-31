@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 #if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem;  // New Input System
+using UnityEngine.InputSystem;
 #endif
 
 public class SettingsDropdownMenu : MonoBehaviour
@@ -20,6 +20,7 @@ public class SettingsDropdownMenu : MonoBehaviour
     public bool pauseWhenOpen = true;
 
     bool isOpen;
+    float savedSpeed = 1f;  // <-- NEW: speed đang dùng trước khi mở menu
 
     void Awake()
     {
@@ -36,7 +37,6 @@ public class SettingsDropdownMenu : MonoBehaviour
     {
         if (!isOpen || !dropdownPanel || !btnSettings) return;
 
-        // Click ra ngoài để đóng — hỗ trợ cả hai hệ input
 #if ENABLE_INPUT_SYSTEM
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
@@ -64,6 +64,11 @@ public class SettingsDropdownMenu : MonoBehaviour
     {
         isOpen = true;
         if (dropdownPanel) dropdownPanel.gameObject.SetActive(true);
+
+        // lưu speed hiện tại (nếu đang chạy)
+        if (Time.timeScale > 0f) savedSpeed = Time.timeScale;
+        else if (savedSpeed <= 0f) savedSpeed = 1f; // dự phòng
+
         if (pauseWhenOpen) Time.timeScale = 0f;
         PositionUnderButton();
     }
@@ -72,7 +77,10 @@ public class SettingsDropdownMenu : MonoBehaviour
     {
         isOpen = false;
         if (dropdownPanel) dropdownPanel.gameObject.SetActive(false);
-        if (pauseWhenOpen) Time.timeScale = 1f;
+
+        // KHÔNG đổi speed về 1! Khôi phục đúng speed trước khi mở menu
+        if (pauseWhenOpen)
+            Time.timeScale = Mathf.Max(0.01f, savedSpeed);
     }
 
     void PositionUnderButton()
@@ -81,12 +89,23 @@ public class SettingsDropdownMenu : MonoBehaviour
         var btnRT = btnSettings.GetComponent<RectTransform>();
         dropdownPanel.anchorMin = btnRT.anchorMin;
         dropdownPanel.anchorMax = btnRT.anchorMax;
-        dropdownPanel.pivot     = new Vector2(1f,1f);
+        dropdownPanel.pivot     = new Vector2(1f, 1f);
         dropdownPanel.position  = btnRT.position + new Vector3(0f, -btnRT.rect.height * 0.5f, 0f);
     }
 
     void OnContinue() { CloseMenu(); }
-    void OnReplay()   { Time.timeScale = 1f; SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
-    void OnQuit()     { Time.timeScale = 1f; SceneManager.LoadScene(lobbySceneName); }
+
+    void OnReplay()
+    {
+        Time.timeScale = 1f; // replay về x1 là hợp lý
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void OnQuit()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(lobbySceneName);
+    }
+
     void OnOptions()  { CloseMenu(); /* mở Option panel nếu có */ }
 }

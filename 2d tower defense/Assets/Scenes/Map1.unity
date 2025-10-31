@@ -9570,7 +9570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7402781452825454029, guid: 577e6c9b3c1de7b45a41a8a955f6288e, type: 3}
       propertyPath: autoStart
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7402781452825454029, guid: 577e6c9b3c1de7b45a41a8a955f6288e, type: 3}
       propertyPath: enemyPrefab
