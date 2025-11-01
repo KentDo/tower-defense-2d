@@ -11173,6 +11173,10 @@ PrefabInstance:
       propertyPath: 'answerButtons.Array.data[3]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1509658448521346516, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 484
+      objectReference: {fileID: 0}
     - target: {fileID: 1835555551471972758, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -11637,6 +11641,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7701690854750208275, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8267063890900310572, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -11720,6 +11728,7 @@ PrefabInstance:
     - {fileID: 6944909698781388734, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
     - {fileID: 3893691441222957357, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
     - {fileID: 7726940985454163073, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
+    - {fileID: 3864077691114682687, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6906758644024124629, guid: 881ddc51b73b163479c830e8bad6653f, type: 3}
