@@ -1,52 +1,27 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;   // thêm namespace này
 
 public class PauseResumeButton : MonoBehaviour
 {
-    [Header("Button Icon")]
-    public Image icon;
-    public Sprite pauseSprite;   // Icon "pause"
-    public Sprite resumeSprite;  // Icon "resume"
+    public Image icon;          // Kéo Image component vào đây (BtnPause)
+    public Sprite pauseSprite;  // PNG pause
+    public Sprite resumeSprite; // PNG resume/play
 
-    [Header("Pause Menu")]
-    public GameObject pauseMenuPanel;  // Kéo panel PauseMenu vào đây
-
-    [Header("Scene Settings")]
-    public string mainMenuScene = "Lobby";   // tên scene menu chính
-    public string currentScene = "Map1";     // tên scene hiện tại (để restart)
-
-    private bool paused = false;
+    bool paused;
+    float savedSpeed = 1f;      // Lưu lại tốc độ trước khi pause
 
     public void OnClickToggle()
     {
         paused = !paused;
-        Time.timeScale = paused ? 0f : 1f;
-
-        // Đổi icon
+        if (paused)
+        {
+            savedSpeed = Time.timeScale;   // Lưu lại tốc độ hiện tại (1/2/3)
+            Time.timeScale = 0f;           // Dừng game
+        }
+        else
+        {
+            Time.timeScale = savedSpeed;   // Trả lại đúng tốc độ trước đó
+        }
         if (icon) icon.sprite = paused ? resumeSprite : pauseSprite;
-
-        // Bật/tắt menu
-        if (pauseMenuPanel) pauseMenuPanel.SetActive(paused);
-    }
-
-    public void OnClickResume()
-    {
-        paused = false;
-        Time.timeScale = 1f;
-        if (icon) icon.sprite = pauseSprite;
-        if (pauseMenuPanel) pauseMenuPanel.SetActive(false);
-    }
-
-    public void OnClickRestart()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(currentScene);
-    }
-
-    public void OnClickMainMenu()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(mainMenuScene);
     }
 }
