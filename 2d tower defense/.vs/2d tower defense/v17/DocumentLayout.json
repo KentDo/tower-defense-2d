@@ -3,23 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\scripts\\lobby\\lobbyui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\lobby\\lobbyui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lobby\\lobbyui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\scripts\\startwavebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\startwavebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\scripts\\lobby\\simplesettingsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B338FBB3-4E0A-6A33-2C4C-CDF2FE1F26CE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lobby\\simplesettingsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8EF7253C-C211-2F1B-70B1-432BE2D91A8D}|Assembly-CSharp-Editor.csproj|C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\assets\\editor\\createlobbyprefab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8EF7253C-C211-2F1B-70B1-432BE2D91A8D}|Assembly-CSharp-Editor.csproj|c:\\users\\ncanh\\documents\\github\\tower-defense-2d\\2d tower defense\\assets\\editor\\createlobbyprefab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8EF7253C-C211-2F1B-70B1-432BE2D91A8D}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\editor\\createlobbyprefab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -38,37 +30,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "StartWaveButton.cs",
-              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\StartWaveButton.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\StartWaveButton.cs",
-              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\StartWaveButton.cs",
-              "RelativeToolTip": "Assets\\Scripts\\StartWaveButton.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAwwEEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T19:02:26.521Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "EnemySpawner.cs",
-              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\EnemySpawner.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemySpawner.cs",
-              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\EnemySpawner.cs",
-              "RelativeToolTip": "Assets\\Scripts\\EnemySpawner.cs",
-              "ViewState": "AgIAAB8BAAAAAAAAAAA9wDMBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T18:59:52.526Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "CreateLobbyPrefab.cs",
               "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Editor\\CreateLobbyPrefab.cs",
               "RelativeDocumentMoniker": "Assets\\Editor\\CreateLobbyPrefab.cs",
@@ -76,11 +42,12 @@
               "RelativeToolTip": "Assets\\Editor\\CreateLobbyPrefab.cs",
               "ViewState": "AgIAAFoAAAAAAAAAAIAwwGAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T15:20:31.31Z"
+              "WhenOpened": "2025-10-30T15:20:31.31Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "LevelBootSave.cs",
               "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\LevelBootSave.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\lobby\\LevelBootSave.cs",
@@ -92,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "SaveSystem.cs",
               "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\SaveSystem.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\lobby\\SaveSystem.cs",
@@ -104,20 +71,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LobbyUI.cs",
-              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\LobbyUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\lobby\\LobbyUI.cs",
-              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\LobbyUI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\lobby\\LobbyUI.cs",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAAAJgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T15:18:20.853Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "SimpleSettingsManager.cs",
               "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\SimpleSettingsManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\lobby\\SimpleSettingsManager.cs",
@@ -125,7 +79,21 @@
               "RelativeToolTip": "Assets\\Scripts\\lobby\\SimpleSettingsManager.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAwwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T15:19:19.67Z"
+              "WhenOpened": "2025-10-30T15:19:19.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LobbyUI.cs",
+              "DocumentMoniker": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\LobbyUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\lobby\\LobbyUI.cs",
+              "ToolTip": "C:\\Users\\ncanh\\Documents\\GitHub\\tower-defense-2d\\2d tower defense\\Assets\\Scripts\\lobby\\LobbyUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\lobby\\LobbyUI.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAwwJ4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T15:18:20.853Z",
+              "EditorCaption": ""
             }
           ]
         }

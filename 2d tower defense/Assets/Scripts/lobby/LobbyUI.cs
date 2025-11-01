@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.InputSystem; // ✅ thêm dòng này
 
 public class LobbyUI : MonoBehaviour
 {
@@ -15,7 +14,7 @@ public class LobbyUI : MonoBehaviour
 
     [Header("Panels")]
     public GameObject settingsPanel;
-    public Button btnClose;
+    public Button btnClose; // <- NEW: nếu không gán, mình sẽ tự tìm
 
     [Header("Refs")]
     public SimpleSettingsManager simpleSettingsManager;
@@ -25,11 +24,14 @@ public class LobbyUI : MonoBehaviour
 
     void Awake()
     {
+        // Wire main buttons
         if (btnPlay) btnPlay.onClick.AddListener(OnClickPlay);
         if (btnReplay) btnReplay.onClick.AddListener(OnClickReplay);
         if (btnContinue) btnContinue.onClick.AddListener(OnClickContinue);
         if (btnSettings) btnSettings.onClick.AddListener(ToggleSettings);
         if (btnQuit) btnQuit.onClick.AddListener(OnClickQuit);
+
+        // Tự tìm nút Close nếu chưa gán trong Inspector
         AutoWireClose();
     }
 
@@ -41,22 +43,23 @@ public class LobbyUI : MonoBehaviour
 
     void Update()
     {
-        // ✅ Dùng Input System thay vì Input cũ
-        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
+        // Bấm ESC để mở/đóng Settings
+        if (Input.GetKeyDown(KeyCode.Escape))
             ToggleSettings();
-        }
     }
 
+    // ===== Public =====
     public void OnCloseSettings()
     {
         if (settingsPanel) settingsPanel.SetActive(false);
     }
 
+    // ===== Private =====
     void ToggleSettings()
     {
         if (!settingsPanel) return;
         settingsPanel.SetActive(!settingsPanel.activeSelf);
+        // đảm bảo Close được nối listener nếu panel được thay prefab ở runtime
         if (btnClose == null) AutoWireClose();
     }
 
@@ -105,6 +108,7 @@ public class LobbyUI : MonoBehaviour
     {
         if (!settingsPanel) return;
 
+        // 1) Nếu đã có tham chiếu, gắn listener chắc chắn
         if (btnClose != null)
         {
             btnClose.onClick.RemoveAllListeners();
@@ -112,9 +116,11 @@ public class LobbyUI : MonoBehaviour
             return;
         }
 
+        // 2) Thử tìm theo tên con "CloseButton"
         var t = settingsPanel.transform.Find("CloseButton");
         if (t) btnClose = t.GetComponent<Button>();
 
+        // 3) Nếu vẫn chưa có, quét mọi Button con và nhận diện bằng tên/label text
         if (btnClose == null)
         {
             foreach (var b in settingsPanel.GetComponentsInChildren<Button>(true))
