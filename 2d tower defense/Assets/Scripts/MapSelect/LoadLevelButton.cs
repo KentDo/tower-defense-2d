@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadLevelButton : MonoBehaviour
@@ -11,7 +11,7 @@ public class LoadLevelButton : MonoBehaviour
         Time.timeScale = 1f;                 // đề phòng đang pause
         if (clearSavesOnPlay)
         {
-            SaveSystem.ClearSave();          // nếu có hệ save tối giản
+            SaveSystem.ClearLastLevel();          // nếu có hệ save tối giản
             // GameSaveManager.Delete();     // bật nếu dùng save đầy đủ
         }
         SceneManager.LoadScene(sceneName);

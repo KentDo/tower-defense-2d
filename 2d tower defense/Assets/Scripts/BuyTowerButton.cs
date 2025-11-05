@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
@@ -64,7 +64,7 @@ public class BuyTowerButton : MonoBehaviour, IPointerClickHandler
 
         // Hiển thị giá
         string costStr = (data != null) ? data.cost.ToString() : "";
-        if (priceTMP)  priceTMP.text  = costStr;
+        if (priceTMP) priceTMP.text = costStr;
         if (priceText) priceText.text = costStr;
     }
 
@@ -82,9 +82,9 @@ public class BuyTowerButton : MonoBehaviour, IPointerClickHandler
 
         if (priceOrig.HasValue)
         {
-            var onCol  = new Color(1f, 0.95f, 0.6f);
+            var onCol = new Color(1f, 0.95f, 0.6f);
             var offCol = new Color(0.7f, 0.7f, 0.7f);
-            if (priceTMP)  priceTMP.color  = ok ? onCol : offCol;
+            if (priceTMP) priceTMP.color = ok ? onCol : offCol;
             if (priceText) priceText.color = ok ? onCol : offCol;
         }
     }
@@ -119,12 +119,12 @@ public class BuyTowerButton : MonoBehaviour, IPointerClickHandler
 
     System.Collections.IEnumerator FlashPrice(Color c)
     {
-        if (priceTMP)  priceTMP.color  = c;
+        if (priceTMP) priceTMP.color = c;
         if (priceText) priceText.color = c;
         yield return new WaitForSeconds(flashTime);
         if (priceOrig.HasValue)
         {
-            if (priceTMP)  priceTMP.color  = priceOrig.Value;
+            if (priceTMP) priceTMP.color = priceOrig.Value;
             if (priceText) priceText.color = priceOrig.Value;
         }
     }

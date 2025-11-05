@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;   // cần cho Action<>
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,97 +10,98 @@ public class LevelManager : MonoBehaviour
     [Header("Game State")]
     public int lives = 20;
 
-    // HUD subscribe vào đây
     public event Action<int> onLivesChanged;
 
     [Header("Path Settings")]
     public Transform[] waypoints;
 
-    [Header("Scene Config")]
-    [Tooltip("Tên scene Lobby để bỏ qua khi auto-save last level")]
-    public string lobbySceneName = "Lobby";
-
-    [Tooltip("Tự lưu tên scene hiện tại khi scene được load (trừ Lobby)")]
-    public bool autoSaveLastLevel = true;
+    private bool isGameOverTriggered;
+    private bool isInvulnerable;
 
     void Awake()
-{
-    if (Instance && Instance != this)
     {
-        Destroy(gameObject);
-        return;
-    }
-    Instance = this;
-    // ❌ XÓA dòng dưới vì không cần giữ qua scene
-    // DontDestroyOnLoad(gameObject);
-}
+        if (Instance && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
-
-    void OnEnable()
-    {
-        // Theo dõi khi scene được load để auto-save
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        Instance = this;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 
     void Start()
     {
-        // Bắn event lần đầu để HUD hiển thị đúng ngay khi vào game
+        GameSession.SetLastGameplayScene(SceneManager.GetActiveScene().name);
         onLivesChanged?.Invoke(lives);
-
-        // Trường hợp LevelManager được đặt trực tiếp trong map (không đi qua Lobby),
-        // vẫn lưu tên scene hiện tại (nếu không phải Lobby)
-        TryAutoSaveCurrentScene();
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // Mỗi lần đổi scene, bắn lại HUD và (tuỳ chọn) auto-save
-        onLivesChanged?.Invoke(lives);
-        TryAutoSaveCurrentScene();
-    }
-
-    private void TryAutoSaveCurrentScene()
-    {
-        if (!autoSaveLastLevel) return;
-
-        string sceneName = SceneManager.GetActiveScene().name;
-        if (!string.IsNullOrEmpty(sceneName) && sceneName != lobbySceneName)
-        {
-            SaveSystem.SetLastLevel(sceneName);
-            // Debug.Log($"✅ Saved last level: {sceneName}");
-        }
-    }
-
-    // ========== PATH ==========
     public int PathCount => waypoints?.Length ?? 0;
-    public Transform GetPathPoint(int i) => (i >= 0 && i < PathCount) ? waypoints[i] : null;
 
-    // ========== BASE DAMAGE ==========
+    public Transform GetPathPoint(int index)
+    {
+        return (index >= 0 && index < PathCount) ? waypoints[index] : null;
+    }
+
     public void SetLives(int value)
     {
+        if (isGameOverTriggered) return;
+
         lives = Mathf.Max(0, value);
         onLivesChanged?.Invoke(lives);
+
         if (lives <= 0)
         {
-            Debug.Log("Game Over");
-            // TODO: show UI / reload scene
+            isGameOverTriggered = true;
+            var quiz = FindObjectOfType<QuizManager>();
+            if (quiz != null)
+            {
+                quiz.ShowQuiz();
+            }
+            else
+            {
+                Debug.LogError("[LevelManager] QuizManager not found in scene.");
+            }
         }
     }
 
     public void DamageBase(int amount)
     {
+        if (isInvulnerable) return;
         SetLives(lives - Mathf.Abs(amount));
     }
 
-    // ========== ENDPOINT ==========
     public void OnEnemyReachEnd(GameObject enemy, int damage = 1)
     {
         DamageBase(damage);
         if (enemy) Destroy(enemy);
+    }
+
+    public void RevivePlayer(int extraLives = 1)
+    {
+        isGameOverTriggered = false;
+        SetLives(lives + Mathf.Max(0, extraLives));
+    }
+
+    public void ActivateInvulnerability(float duration)
+    {
+        if (!isInvulnerable)
+        {
+            StartCoroutine(InvulnerabilityCoroutine(duration));
+        }
+    }
+
+    private IEnumerator InvulnerabilityCoroutine(float duration)
+    {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(duration);
+        isInvulnerable = false;
     }
 }
