@@ -147,7 +147,6 @@ public class TowerPlacer : MonoBehaviour
         select.panel = infoPanel; // 🔹 Panel thật trong scene (gán qua Inspector)
 
         Debug.Log($"Spawned {towerGO.name}, panel assigned = {(infoPanel != null ? infoPanel.name : "NULL")}");
-        Debug.Log($"select.panel after assign = {(select.panel != null ? select.panel.name : "NULL")}");
     }
 
     void CancelPlacement()
@@ -209,5 +208,26 @@ public class TowerPlacer : MonoBehaviour
         if (ghostSRs == null) return;
         foreach (var sr in ghostSRs) sr.color = c;
         if (ghostRange) ghostRange.color = new Color(c.r, c.g, c.b, 0.35f);
+    }
+
+    // ========= NEW: Reset state khi Retry =========
+    public void Reinitialize()
+    {
+        ClearGhost();
+        hasSelection = false;
+        canPlace = false;
+        ghostTowerPrefab = null;
+
+        // Rebind BuildManager & event
+        if (!build) build = BuildManager.I;
+        if (build != null)
+        {
+            build.onSelectionChanged -= OnSelectionChanged;
+            build.onSelectionChanged += OnSelectionChanged;
+        }
+
+        if (!cam) cam = Camera.main;
+
+        Debug.Log("[TowerPlacer] Reinitialized after retry");
     }
 }
