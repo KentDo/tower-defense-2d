@@ -17,7 +17,7 @@ public class Tower : MonoBehaviour
     public Animator weaponAnimator;
     public float fireRate = 1.2f;
     public float range = 4f;
-    public float damage = 1f;               // thêm: damage cơ bản (nếu projectile đọc)
+    public float damage = 50f;              // 50 damage = 2 phát giết quái 100 HP
     public float turnSpeed = 360f;
     public LayerMask enemyMask;
 
@@ -104,8 +104,8 @@ public class Tower : MonoBehaviour
         if (homing)
         {
             homing.Init(target, enemyMask);
-            // Nếu ArrowHoming có field damage, set thêm:
-            // homing.damage = Mathf.RoundToInt(damage);
+            // Set damage từ tower (50 cho 2 phát giết quái 100 HP)
+            homing.damage = Mathf.RoundToInt(damage);
         }
 
         if (weaponAnimator) weaponAnimator.SetTrigger("Shoot");

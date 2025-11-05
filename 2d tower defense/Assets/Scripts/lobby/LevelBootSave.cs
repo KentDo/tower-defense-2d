@@ -5,6 +5,7 @@ public class LevelBootSave : MonoBehaviour
 {
     void Start()
     {
-        SaveSystem.SetLastLevel(SceneManager.GetActiveScene().name);
+        string sceneName = SceneManager.GetActiveScene().name;
+        SaveSystem.SetLastLevel(sceneName);
     }
 }
