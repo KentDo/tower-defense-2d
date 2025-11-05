@@ -630,8 +630,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StartWaveButton
   spawner: {fileID: 0}
   rootToHide: {fileID: 6906758644024124629}
-  countdownText: {fileID: 0}
-  autoStartDelay: 5
 --- !u!1 &1308702741435014122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,9 +1323,6 @@ MonoBehaviour:
   icon: {fileID: 467321459735043504}
   pauseSprite: {fileID: 21300000, guid: 189774240e23ac34aa7257ee986257ab, type: 3}
   resumeSprite: {fileID: 21300000, guid: b670f5d4859d46746a6f50ee5f846299, type: 3}
-  pauseMenuPanel: {fileID: 0}
-  mainMenuScene: Lobby
-  currentScene: Map1
 --- !u!1 &2678319687280244649
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,11 +2539,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopSelectButton
   index: 0
-  buyButton: {fileID: 0}
-  icon: {fileID: 0}
-  priceText: {fileID: 0}
-  priceTextTMP: {fileID: 0}
-  lockOverlay: {fileID: 0}
 --- !u!1 &3893691441222957357
 GameObject:
   m_ObjectHideFlags: 0
@@ -3428,7 +3418,6 @@ RectTransform:
   - {fileID: 6323277267732483902}
   - {fileID: 5264871605137923800}
   - {fileID: 4845319919771000231}
-  - {fileID: 2023939027160903857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3633,100 +3622,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &5069735989287766163
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2023939027160903857}
-  - component: {fileID: 8371642853015983255}
-  - component: {fileID: 5153165406216316123}
-  - component: {fileID: 2228643121762391426}
-  m_Layer: 5
-  m_Name: Tower1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2023939027160903857
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5069735989287766163}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6362584142916950527}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50, y: 70}
-  m_SizeDelta: {x: 100, y: 140}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &8371642853015983255
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5069735989287766163}
-  m_CullTransparentMesh: 1
---- !u!114 &5153165406216316123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5069735989287766163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -5901685104126582622, guid: 02e69aad21433904baf0b192e7ce326a, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &2228643121762391426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5069735989287766163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5776de4590955914f9032818429338c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BuyTowerButton
-  index: 0
-  priceTMP: {fileID: 0}
-  priceText: {fileID: 0}
-  lockOverlay: {fileID: 0}
-  flashRedOnDeny: 1
-  flashTime: 0.12
 --- !u!1 &6551729265797374495
 GameObject:
   m_ObjectHideFlags: 0
@@ -4111,10 +4006,7 @@ MonoBehaviour:
   panelQuiz: {fileID: 0}
   txtQuestion: {fileID: 0}
   answerButtons: []
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  correctColor: {r: 0.6, g: 1, b: 0.6, a: 1}
-  wrongColor: {r: 1, g: 0.6, b: 0.6, a: 1}
-  revealDelay: 0.6
+  gameOverScene: GameOverScene
 --- !u!1 &7290982909157945975
 GameObject:
   m_ObjectHideFlags: 0
