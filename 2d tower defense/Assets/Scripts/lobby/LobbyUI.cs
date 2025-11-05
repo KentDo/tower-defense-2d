@@ -63,7 +63,7 @@ public class LobbyUI : MonoBehaviour
     void OnClickPlay()
     {
         string level = string.IsNullOrEmpty(defaultFirstLevel) ? "Map1" : defaultFirstLevel;
-        TryLoad(level);
+        TryLoad("MapSelect");
     }
 
     void OnClickReplay()

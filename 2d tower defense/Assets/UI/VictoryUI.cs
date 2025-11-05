@@ -1,6 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class VictoryUI : MonoBehaviour
 {
@@ -28,5 +29,26 @@ public class VictoryUI : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    static void EnsureEventSystem()
+    {
+        if (Object.FindObjectOfType<EventSystem>() != null) return;
+
+#if ENABLE_INPUT_SYSTEM
+        new GameObject("EventSystem",
+            typeof(EventSystem),
+            typeof(UnityEngine.InputSystem.UI.InputSystemUIInputModule));
+#else
+    new GameObject("EventSystem",
+        typeof(EventSystem),
+        typeof(StandaloneInputModule));
+#endif
+    }
+
+    void OnEnable()
+    {
+        Time.timeScale = 1f;
+        EnsureEventSystem();   // <-- đảm bảo có EventSystem
     }
 }
