@@ -1,67 +1,152 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.InputSystem; // ✅ thêm dòng này
 
 public class LobbyUI : MonoBehaviour
 {
     [Header("Buttons")]
-    public Button btnContinue;
+    public Button btnPlay;
     public Button btnReplay;
-    public Button btnQuit;
+    public Button btnContinue;
     public Button btnSettings;
+    public Button btnQuit;
 
-    [Header("Settings Panel")]
+    [Header("Panels")]
     public GameObject settingsPanel;
+    public Button btnClose;
+
+    [Header("Refs")]
+    public SimpleSettingsManager simpleSettingsManager;
 
     [Header("Config")]
-    [Tooltip("Tên level mặc định nếu chưa có save")]
-    public string defaultFirstLevel = "Level1";
+    public string defaultFirstLevel = "Map1";
 
-    private void Awake()
+    void Awake()
     {
-        if (btnContinue) btnContinue.onClick.AddListener(OnContinue);
-        if (btnReplay)   btnReplay.onClick.AddListener(OnReplay);
-        if (btnQuit)     btnQuit.onClick.AddListener(OnQuit);
-        if (btnSettings) btnSettings.onClick.AddListener(() => ToggleSettings(true));
+        if (btnPlay) btnPlay.onClick.AddListener(OnClickPlay);
+        if (btnReplay) btnReplay.onClick.AddListener(OnClickReplay);
+        if (btnContinue) btnContinue.onClick.AddListener(OnClickContinue);
+        if (btnSettings) btnSettings.onClick.AddListener(ToggleSettings);
+        if (btnQuit) btnQuit.onClick.AddListener(OnClickQuit);
+        AutoWireClose();
+    }
 
+    void Start()
+    {
+        if (simpleSettingsManager) simpleSettingsManager.LoadSettings();
         if (settingsPanel) settingsPanel.SetActive(false);
     }
 
-    private void Start()
+    void Update()
     {
-        if (btnContinue)
-            btnContinue.interactable = SaveSystem.HasSave;
-    }
-
-    private void OnContinue()
-    {
-        string level = SaveSystem.HasSave ? SaveSystem.GetLastLevel(defaultFirstLevel)
-                                          : defaultFirstLevel;
-        SceneManager.LoadScene(level);
-    }
-
-    private void OnReplay()
-    {
-        SaveSystem.ClearSave();
-        SceneManager.LoadScene(defaultFirstLevel);
-    }
-
-    private void OnQuit()
-    {
-    #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-    #else
-        Application.Quit();
-    #endif
-    }
-
-    public void ToggleSettings(bool show)
-    {
-        if (settingsPanel) settingsPanel.SetActive(show);
+        // ✅ Dùng Input System thay vì Input cũ
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            ToggleSettings();
+        }
     }
 
     public void OnCloseSettings()
     {
-        ToggleSettings(false);
+        if (settingsPanel) settingsPanel.SetActive(false);
+    }
+
+    void ToggleSettings()
+    {
+        if (!settingsPanel) return;
+        settingsPanel.SetActive(!settingsPanel.activeSelf);
+        if (btnClose == null) AutoWireClose();
+    }
+
+    void OnClickPlay()
+    {
+        string level = string.IsNullOrEmpty(defaultFirstLevel) ? "Map1" : defaultFirstLevel;
+        TryLoad("MapSelect");
+    }
+
+    void OnClickReplay()
+    {
+        string level = string.IsNullOrEmpty(defaultFirstLevel) ? "Map1" : defaultFirstLevel;
+        TryLoad(level);
+    }
+
+    void OnClickContinue()
+    {
+        string last = SaveSystem.GetLastLevel();
+        if (!string.IsNullOrEmpty(last) && Application.CanStreamedLevelBeLoaded(last))
+            SceneManager.LoadScene(last);
+        else
+            OnClickPlay();
+    }
+
+    void OnClickQuit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+    bool TryLoad(string sceneName)
+    {
+        if (!Application.CanStreamedLevelBeLoaded(sceneName))
+        {
+            Debug.LogError($"[LobbyUI] Scene '{sceneName}' chưa có trong Build Profiles.");
+            return false;
+        }
+        SceneManager.LoadScene(sceneName);
+        return true;
+    }
+
+    void AutoWireClose()
+    {
+        if (!settingsPanel) return;
+
+        if (btnClose != null)
+        {
+            btnClose.onClick.RemoveAllListeners();
+            btnClose.onClick.AddListener(OnCloseSettings);
+            return;
+        }
+
+        var t = settingsPanel.transform.Find("CloseButton");
+        if (t) btnClose = t.GetComponent<Button>();
+
+        if (btnClose == null)
+        {
+            foreach (var b in settingsPanel.GetComponentsInChildren<Button>(true))
+            {
+                if (b.name.ToLower().Contains("close"))
+                {
+                    btnClose = b;
+                    break;
+                }
+                var tmp = b.GetComponentInChildren<TMP_Text>();
+                if (tmp && tmp.text.Trim().ToLower() == "close")
+                {
+                    btnClose = b;
+                    break;
+                }
+                var utext = b.GetComponentInChildren<UnityEngine.UI.Text>();
+                if (utext && utext.text.Trim().ToLower() == "close")
+                {
+                    btnClose = b;
+                    break;
+                }
+            }
+        }
+
+        if (btnClose != null)
+        {
+            btnClose.onClick.RemoveAllListeners();
+            btnClose.onClick.AddListener(OnCloseSettings);
+        }
+        else
+        {
+            Debug.LogWarning("[LobbyUI] Không tìm thấy nút Close trong SettingsPanel. Hãy kéo thả vào field 'Btn Close'.");
+        }
     }
 }

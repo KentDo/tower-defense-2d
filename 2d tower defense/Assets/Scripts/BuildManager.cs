@@ -65,14 +65,11 @@ public class BuildManager : MonoBehaviour
     /// </summary>
     public void SelectIndex(int idx)
     {
-        // Chốt chỉ 2 loại trụ
         if (idx < 0 || idx > 1) return;
         if (towers == null || towers.Length == 0) return;
 
-        // Nếu trụ chưa cấu hình hoặc prefab trống thì bỏ qua
         if (idx >= towers.Length || towers[idx] == null || towers[idx].prefab == null) return;
 
-        // Chỉ cho chọn khi đủ tiền cho MỘT lần đặt
         if (!CanAfford(towers[idx].cost)) return;
 
         SelectedIndex = idx;
@@ -86,5 +83,16 @@ public class BuildManager : MonoBehaviour
             SelectedIndex = -1;
             onSelectionChanged?.Invoke(SelectedIndex);
         }
+    }
+
+    // ========= NEW: Reset state khi Retry =========
+    public void Reinitialize()
+    {
+        // đủ dùng cho flow hiện tại: reset tiền/selection + phát sự kiện cho HUD
+        coins = 100;
+        SelectedIndex = -1;
+        onSelectionChanged?.Invoke(SelectedIndex);
+        onCoinsChanged?.Invoke(coins);
+        Debug.Log("[BuildManager] Reinitialized after retry");
     }
 }
