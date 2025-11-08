@@ -5,48 +5,90 @@ public class Tower : MonoBehaviour
 {
     [Header("Info & Economy")]
     public string towerName = "Archer";
-    public int startCoinsCost = 50;         // giá mua (do BuildManager trừ khi đặt)
-    public int upgradeCost = 50;            // giá nâng cấp hiện tại
+    public int startCoinsCost = 50;
+    public int upgradeCost = 50;
     [Range(0f, 1f)] public float sellPercent = 0.6f;
 
-    public event Action<Tower> onStatsChanged; // Panel UI subscribe
+    public event Action<Tower> onStatsChanged;
 
-    [Header("Weapon")]
-    public Transform muzzle;
-    public GameObject projectile;
-    public Animator weaponAnimator;
-    public float fireRate = 1.2f;
+    [Header("Combat")]
+    public float fireRate = 1.2f;   // phát/giây
     public float range = 4f;
-    public float damage = 50f;              // 50 damage = 2 phát giết quái 100 HP
-    public float turnSpeed = 360f;
+    public float damage = 50f;
+    public float turnSpeed = 360f;   // độ/giây
     public LayerMask enemyMask;
 
-    Transform target;
-    float cd;
+    [Header("Shoot Points & Prefabs")]
+    public Transform muzzle;         // PHẢI là con của 'weapon'
+    public GameObject projectile;    // fallback projectile (nếu thiếu theo level)
 
-    [Header("Renderers & Sprites")]
-    public SpriteRenderer baseSR;
-    public SpriteRenderer weaponSR;
-    public Transform weaponPivot;
+    [Header("Projectile by Level (optional)")]
+    public GameObject[] projectileLevels; // Prefab đạn cho từng level (index = level). Null -> dùng 'projectile'
 
-    public Sprite[] baseLevels;
-    public Sprite[] weaponLevels;
-    public Vector2[] weaponOffsets;
+    [Header("Hierarchy (pivot vs weapon)")]
+    public Transform weaponPivot;    // KHÔNG quay (điểm gắn/offset theo level)
+    public Transform weapon;         // QUAY THẰNG NÀY
+    public Animator weaponAnimator;  // Animator đặt trên 'weapon'
+    [Tooltip("Hiệu chỉnh hướng gốc của sprite vũ khí. 0 nếu sprite nhìn sang phải; -90 nếu nhìn lên.")]
+    public float aimVisualOffsetDeg = -90f;
+
+    [Header("Visuals by Level (optional)")]
+    public SpriteRenderer baseSR;        // sprite thân
+    public SpriteRenderer weaponSR;      // sprite vũ khí (nếu tách renderer)
+    public Sprite[] baseLevels;          // sprite thân theo level
+    public Sprite[] weaponLevels;        // sprite vũ khí theo level
+    public Vector2[] weaponOffsets;      // OFFSET đặt cho weaponPivot (không quay)
+    public RuntimeAnimatorController[] weaponControllers; // controller theo level (chỉ đổi khi PLAY)
 
     [Header("Level & Scaling")]
     [Range(0, 2)] public int startLevel = 0;
-    public int level { get; private set; } = 0;  // API: public get
-    // Hệ số tăng theo mỗi cấp (có thể chỉnh tùy loại trụ)
+    public int level { get; private set; } = 0;
     public float dmgPerLevelMul = 1.25f;
     public float firePerLevelMul = 1.10f;
     public float rangePerLevelAdd = 0.25f;
     public float upgradeCostMul = 1.40f;
 
-    public int Level => level; // giữ alias cũ nếu nơi khác đang gọi
+    public int Level => level;
+
+    // Internals
+    Transform target;
+    float cd;
+
+    // ========= Lifecycle =========
 
     void Awake()
     {
+        AutoWireReferences();
+
+        // Kiểm tra nhanh để tránh cấu hình sai
+        if (!weapon) Debug.LogError("[Tower] 'weapon' (child quay) chưa được gán!", this);
+        if (!weaponPivot) Debug.LogWarning("[Tower] 'weaponPivot' chưa gán (offset level sẽ không dùng).", this);
+        if (muzzle && muzzle.parent != weapon)
+            Debug.LogWarning("[Tower] 'muzzle' nên là CON của 'weapon' để quay theo.", this);
+    }
+
+    void Start()
+    {
+        // Gọi ở Start thay vì Awake để an toàn với Editor/Animator
         SetLevel(startLevel);
+    }
+
+    void AutoWireReferences()
+    {
+        if (!weaponPivot)
+        {
+            var p = transform.Find("weaponPivot");
+            if (p) weaponPivot = p;
+        }
+        if (!weapon && weaponPivot)
+        {
+            var w = weaponPivot.Find("weapon");
+            if (w) weapon = w;
+        }
+        if (!weaponAnimator && weapon)
+        {
+            weaponAnimator = weapon.GetComponent<Animator>();
+        }
     }
 
     void Update()
@@ -59,19 +101,19 @@ public class Tower : MonoBehaviour
 
         bool inRange = target != null;
         if (weaponAnimator) weaponAnimator.SetBool("HasTarget", inRange);
-        if (!inRange) return;
+        if (!inRange || !weapon) return;
 
-        // xoay nòng (WeaponPivot) thay vì root
-        Vector2 aim = (Vector2)target.position - (Vector2)transform.position;
-        float ang = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
-        Quaternion to = Quaternion.AngleAxis(ang - 90f, Vector3.forward);
+        // QUAY CHỈ THẰNG CON 'weapon' (localRotation quanh Z)
+        Vector2 origin = weapon ? (Vector2)weapon.position
+                                : (weaponPivot ? (Vector2)weaponPivot.position
+                                               : (Vector2)transform.position);
+        Vector2 aim = (Vector2)target.position - origin;
+        float angDeg = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
+        Quaternion goal = Quaternion.AngleAxis(angDeg + aimVisualOffsetDeg, Vector3.forward);
 
-        if (weaponPivot != null)
-        {
-            weaponPivot.rotation = Quaternion.RotateTowards(
-                weaponPivot.rotation, to, turnSpeed * Time.deltaTime
-            );
-        }
+        weapon.localRotation = Quaternion.RotateTowards(
+            weapon.localRotation, goal, turnSpeed * Time.deltaTime
+        );
 
         // bắn
         if (cd <= 0f)
@@ -80,6 +122,8 @@ public class Tower : MonoBehaviour
             Shoot();
         }
     }
+
+    // ========= Targeting & Shooting =========
 
     Transform FindNearestEnemy()
     {
@@ -93,22 +137,40 @@ public class Tower : MonoBehaviour
         return pick;
     }
 
+    GameObject GetProjectileForLevel()
+    {
+        if (projectileLevels != null && projectileLevels.Length > 0)
+        {
+            int i = Mathf.Clamp(level, 0, projectileLevels.Length - 1);
+            if (projectileLevels[i] != null)
+                return projectileLevels[i];
+        }
+        return projectile; // fallback
+    }
+
     void Shoot()
     {
-        if (!target || !projectile || !muzzle || !weaponPivot) return;
+        if (!target || !muzzle || !weapon) return;
 
-        var go = Instantiate(projectile, muzzle.position, weaponPivot.rotation);
+        var projPrefab = GetProjectileForLevel();
+        if (!projPrefab) return;
 
-        // Nếu projectile hỗ trợ damage, truyền vào
+        // Dùng rotation của muzzle để bảo đảm hướng nòng
+        var go = Instantiate(projPrefab, muzzle.position, muzzle.rotation);
+
+        // truyền damage nếu projectile hỗ trợ
         var homing = go.GetComponent<ArrowHoming>();
         if (homing)
         {
             homing.Init(target, enemyMask);
-            // Set damage từ tower (50 cho 2 phát giết quái 100 HP)
             homing.damage = Mathf.RoundToInt(damage);
         }
 
-        if (weaponAnimator) weaponAnimator.SetTrigger("Shoot");
+        if (weaponAnimator)
+        {
+            weaponAnimator.ResetTrigger("Shoot");
+            weaponAnimator.SetTrigger("Shoot");
+        }
     }
 
     void OnDrawGizmosSelected()
@@ -117,7 +179,8 @@ public class Tower : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
     }
 
-    // ========== API NÂNG CẤP/BÁN (Chuẩn hóa) ==========
+    // ========= Economy =========
+
     public bool Upgrade()
     {
         var bm = BuildManager.I;
@@ -130,9 +193,7 @@ public class Tower : MonoBehaviour
         range += rangePerLevelAdd;
         upgradeCost = Mathf.RoundToInt(upgradeCost * upgradeCostMul);
 
-        // Cập nhật visual theo level
-        ApplyLevelSprites();
-
+        ApplyLevelVisuals();
         onStatsChanged?.Invoke(this);
         return true;
     }
@@ -145,20 +206,14 @@ public class Tower : MonoBehaviour
         return refund;
     }
 
-    // ========== Level & Sprites ==========
+    // ========= Level & Visuals =========
+
     public void SetLevel(int lv)
     {
-        // clamp theo số sprite (nếu bạn có ít sprite hơn số level thực)
-        int maxSpriteLevel = Mathf.Min(
-            baseLevels != null ? baseLevels.Length - 1 : 0,
-            weaponLevels != null ? weaponLevels.Length - 1 : 0
-        );
-        level = Mathf.Clamp(lv, 0, Mathf.Max(0, maxSpriteLevel));
+        level = Mathf.Max(0, lv);
+        ApplyLevelVisuals();
 
-        ApplyLevelSprites();
-
-        // reset chỉ số theo level khởi điểm (nếu muốn scale ngay từ Start)
-        // *Giữ nguyên fireRate/range/damage bạn set trong Inspector cho level 0*
+        // scale chỉ số ngay từ level khởi điểm (giữ thông số inspector là level 0)
         for (int i = 0; i < level; i++)
         {
             damage *= dmgPerLevelMul;
@@ -166,24 +221,42 @@ public class Tower : MonoBehaviour
             range += rangePerLevelAdd;
             upgradeCost = Mathf.RoundToInt(upgradeCost * upgradeCostMul);
         }
+
+        onStatsChanged?.Invoke(this);
     }
 
-    void ApplyLevelSprites()
+    void ApplyLevelVisuals()
     {
+        // sprite thân
         if (baseSR && baseLevels != null && baseLevels.Length > 0)
         {
             int i = Mathf.Clamp(level, 0, baseLevels.Length - 1);
             baseSR.sprite = baseLevels[i];
         }
-        if (weaponSR && weaponLevels != null && weaponLevels.Length > 0)
+        // sprite vũ khí (nếu dùng riêng) — chỉ set bằng code nếu Animator KHÔNG điều khiển sprite
+        bool animatorControlsWeapon = weaponAnimator && Application.isPlaying && weaponControllers != null && weaponControllers.Length > 0;
+        if (weaponSR && weaponLevels != null && weaponLevels.Length > 0 && !animatorControlsWeapon)
         {
             int i = Mathf.Clamp(level, 0, weaponLevels.Length - 1);
             weaponSR.sprite = weaponLevels[i];
         }
+        // OFFSET weaponPivot theo level (weaponPivot không quay)
         if (weaponPivot && weaponOffsets != null && weaponOffsets.Length > 0)
         {
             int i = Mathf.Clamp(level, 0, weaponOffsets.Length - 1);
             weaponPivot.localPosition = weaponOffsets[i];
+        }
+        // đổi AnimatorController theo level (CHỈ khi đang PLAY để tránh lỗi Editor)
+        if (Application.isPlaying && weaponAnimator && weaponControllers != null && weaponControllers.Length > 0)
+        {
+            int i = Mathf.Clamp(level, 0, weaponControllers.Length - 1);
+            var ctrl = weaponControllers[i];
+            if (ctrl && weaponAnimator.runtimeAnimatorController != ctrl)
+            {
+                weaponAnimator.runtimeAnimatorController = ctrl;
+                weaponAnimator.Rebind();
+                weaponAnimator.Update(0f);
+            }
         }
     }
 
@@ -192,10 +265,29 @@ public class Tower : MonoBehaviour
     {
         if (!Application.isPlaying)
         {
-            // preview sprite theo startLevel trên Editor
+            // Preview an toàn trong Editor (không động vào AnimatorController)
             int prev = level;
             level = startLevel;
-            ApplyLevelSprites();
+
+            // sprite thân
+            if (baseSR && baseLevels != null && baseLevels.Length > 0)
+            {
+                int i = Mathf.Clamp(level, 0, baseLevels.Length - 1);
+                baseSR.sprite = baseLevels[i];
+            }
+            // sprite vũ khí (không dùng Animator trong Editor)
+            if (weaponSR && weaponLevels != null && weaponLevels.Length > 0)
+            {
+                int i = Mathf.Clamp(level, 0, weaponLevels.Length - 1);
+                weaponSR.sprite = weaponLevels[i];
+            }
+            // offset pivot
+            if (weaponPivot && weaponOffsets != null && weaponOffsets.Length > 0)
+            {
+                int i = Mathf.Clamp(level, 0, weaponOffsets.Length - 1);
+                weaponPivot.localPosition = weaponOffsets[i];
+            }
+
             level = prev;
         }
     }
