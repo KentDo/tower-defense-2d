@@ -57,11 +57,11 @@ Transform:
   m_GameObject: {fileID: 4411638657298950731}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.020000001, y: 0.4100001, z: 0}
+  m_LocalPosition: {x: 0.03, y: 2.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7748819676516774889}
+  m_Father: {fileID: 1622700871709807395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4862933287012313553
 GameObject:
@@ -92,6 +92,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 10802636653670861}
   - {fileID: 7748819676516774889}
   m_Father: {fileID: 4204064696776977495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -207,16 +208,21 @@ MonoBehaviour:
   upgradeCost: 50
   sellPercent: 0.6
   fireRate: 1.2
-  range: 10
-  damage: 1
+  range: 5
+  damage: 5
   turnSpeed: 360
   enemyMask:
     serializedVersion: 2
     m_Bits: 128
   muzzle: {fileID: 10802636653670861}
   projectile: {fileID: 4201993262068200297, guid: ab3dcc4ddf3a84348a30da0e70839066, type: 3}
+  projectileLevels:
+  - {fileID: 4201993262068200297, guid: ab3dcc4ddf3a84348a30da0e70839066, type: 3}
+  - {fileID: 4201993262068200297, guid: ad77f3d1e52436b4fa68a9572bcaeba6, type: 3}
+  - {fileID: 4201993262068200297, guid: 8001bcd7ae821c04396a3dcfd94fdf3e, type: 3}
   weaponPivot: {fileID: 1622700871709807395}
-  weaponAnimator: {fileID: 0}
+  weapon: {fileID: 7748819676516774889}
+  weaponAnimator: {fileID: 8950484074638605324}
   aimVisualOffsetDeg: -90
   baseSR: {fileID: 264294106467010053}
   weaponSR: {fileID: 1685334216347051739}
@@ -431,8 +437,7 @@ Transform:
   m_LocalPosition: {x: 0.05, y: 2.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 10802636653670861}
+  m_Children: []
   m_Father: {fileID: 1622700871709807395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1685334216347051739
