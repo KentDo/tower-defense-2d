@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &120010043139672886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3279220005342628180}
+  m_Layer: 3
+  m_Name: BasePivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3279220005342628180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120010043139672886}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4238650768160342699}
+  m_Father: {fileID: 4204064696776977495}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4411638657298950731
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,8 +56,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4411638657298950731}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.03, y: 2.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,12 +88,12 @@ Transform:
   m_GameObject: {fileID: 4862933287012313553}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7748819676516774889}
   - {fileID: 10802636653670861}
+  - {fileID: 7748819676516774889}
   m_Father: {fileID: 4204064696776977495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4864971164970055308
@@ -76,6 +108,7 @@ GameObject:
   - component: {fileID: -5588745200774284882}
   - component: {fileID: 7762449479343044343}
   - component: {fileID: 1080655824723097168}
+  - component: {fileID: 6415051861078286051}
   m_Layer: 3
   m_Name: Tower
   m_TagString: Untagged
@@ -92,12 +125,12 @@ Transform:
   m_GameObject: {fileID: 4864971164970055308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.14, y: 2.72, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4238650768160342699}
   - {fileID: 1622700871709807395}
+  - {fileID: 3279220005342628180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &-5588745200774284882
@@ -174,24 +207,38 @@ MonoBehaviour:
   startCoinsCost: 50
   upgradeCost: 50
   sellPercent: 0.6
-  muzzle: {fileID: 10802636653670861}
-  projectile: {fileID: 4201993262068200297, guid: ab3dcc4ddf3a84348a30da0e70839066, type: 3}
-  weaponAnimator: {fileID: 0}
   fireRate: 1.2
-  range: 10
-  damage: 1
+  range: 5
+  damage: 5
   turnSpeed: 360
   enemyMask:
     serializedVersion: 2
     m_Bits: 128
+  muzzle: {fileID: 10802636653670861}
+  projectile: {fileID: 4201993262068200297, guid: ab3dcc4ddf3a84348a30da0e70839066, type: 3}
+  projectileLevels:
+  - {fileID: 4201993262068200297, guid: ab3dcc4ddf3a84348a30da0e70839066, type: 3}
+  - {fileID: 4201993262068200297, guid: ad77f3d1e52436b4fa68a9572bcaeba6, type: 3}
+  - {fileID: 4201993262068200297, guid: 8001bcd7ae821c04396a3dcfd94fdf3e, type: 3}
+  weaponPivot: {fileID: 1622700871709807395}
+  weapon: {fileID: 7748819676516774889}
+  weaponAnimator: {fileID: 8950484074638605324}
+  aimVisualOffsetDeg: -90
   baseSR: {fileID: 264294106467010053}
   weaponSR: {fileID: 1685334216347051739}
-  weaponPivot: {fileID: 1622700871709807395}
   baseLevels:
   - {fileID: -5901685104126582622, guid: 02e69aad21433904baf0b192e7ce326a, type: 3}
+  - {fileID: -1157907071, guid: 02e69aad21433904baf0b192e7ce326a, type: 3}
+  - {fileID: -1441635702, guid: 02e69aad21433904baf0b192e7ce326a, type: 3}
   weaponLevels:
   - {fileID: 7998958220294591405, guid: 1748435c462570b418d495e101df4303, type: 3}
+  - {fileID: 1381939290769436711, guid: 3585d2514222e254f8be72ef5dee2697, type: 3}
+  - {fileID: -2766398028194884784, guid: 62ee754407fbb5e4285e933c7940ee08, type: 3}
   weaponOffsets: []
+  weaponControllers:
+  - {fileID: 9100000, guid: 06d7603a3c5f3b14fb2142c1964bc636, type: 2}
+  - {fileID: 9100000, guid: 40cc0e888b644c64aaf630315d586b32, type: 2}
+  - {fileID: 9100000, guid: 22848b98e9ddaef41af74a119e22331c, type: 2}
   startLevel: 0
   dmgPerLevelMul: 1.25
   firePerLevelMul: 1.1
@@ -243,6 +290,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!50 &6415051861078286051
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864971164970055308}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 3
 --- !u!1 &5488628350690299873
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,12 +342,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5488628350690299873}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4204064696776977495}
+  m_Father: {fileID: 3279220005342628180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &264294106467010053
 SpriteRenderer:
@@ -360,7 +434,7 @@ Transform:
   m_GameObject: {fileID: 5566913783400630991}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.05, y: 2.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -434,7 +508,7 @@ Animator:
   m_GameObject: {fileID: 5566913783400630991}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1d64bb91e7ec625459032e1f41465f1d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 06d7603a3c5f3b14fb2142c1964bc636, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

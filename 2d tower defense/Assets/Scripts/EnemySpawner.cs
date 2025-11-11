@@ -41,6 +41,9 @@ public class EnemySpawner : MonoBehaviour
     public bool loop = false;
     public float loopDelay = 4f;
 
+    [Header("Reward")]
+    public int waveCompletionReward = 20; // <== BỔ SUNG BIẾN REWARD
+
     [Header("Debug")]
     public int currentWaveIndex = -1;  // -1 = idle
     public int alive = 0;
@@ -146,6 +149,18 @@ public class EnemySpawner : MonoBehaviour
             // Chờ clear (alive == 0)
             yield return new WaitUntil(() => alive <= 0);
 
+            // === BỔ SUNG: CỘNG THƯỞNG SAU KHI CLEAR WAVE ===
+            if (waveCompletionReward > 0)
+            {
+                // Nếu đã có hệ thống tiền tệ/coin:
+                // PlayerMoney.Instance.AddMoney(waveCompletionReward);
+                // Hoặc cộng biến nào đó nhóm bạn đang dùng:
+                // GameManager.coin += waveCompletionReward;
+                // Nếu chưa có, chỉ cần log:
+                BuildManager.I.Add(waveCompletionReward);
+                Debug.Log($"[Spawner] Đã thưởng {waveCompletionReward} coins cho người chơi sau wave {currentWaveIndex+1}!");
+            }
+
             // Delay giữa waves — có thể bị skip nếu người chơi bấm Next
             if (!_skipInterWaveDelay && wave.nextWaveDelay > 0f)
                 yield return new WaitForSeconds(wave.nextWaveDelay);
@@ -156,6 +171,8 @@ public class EnemySpawner : MonoBehaviour
         currentWaveIndex = -1;
         onAllWavesFinished?.Invoke();
         Debug.Log("[Spawner] All waves finished.");
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VictoryScene");
     }
 
     // ========= Legacy single-wave (giữ cho dự án cũ) =========

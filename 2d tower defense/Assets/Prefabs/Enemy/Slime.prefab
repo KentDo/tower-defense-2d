@@ -130,7 +130,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -196,11 +196,40 @@ MonoBehaviour:
   health: {fileID: 5190391960266167175}
   path: {fileID: 0}
   moveSpeed: 2
+  waypointReachDistance: 0.1
   useRotation: 0
   rotationSpeed: 5
-  waypointReachDistance: 0.1
-  goldOnDeath: 0
+  rotationRoot: {fileID: 2113969680103492521}
+  animator: {fileID: 5268773875173701093}
+  spriteToFlip: {fileID: 2109552351844370065}
+  flipSpriteOnHorizontal: 1
+  sideSpriteFacesRight: 0
+  deadZone: 0.03
+  axisHysteresis: 0.1
+  goldOnDeath: 1
   deathVfx: {fileID: 0}
+  deathCleanupDelay: 0.35
+  shrinkOnDeath: 1
+  onGoldReward:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1829882816700436101, guid: 630b01aa04b9db84a88789e365022a1f, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: AddGold
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  waitDeathAnimationEvent: 1
+  useAnimatorDeath: 1
+  deathTriggerName: Die
+  deathStateName: Death
+  deathAnimFallbackSeconds: 0.6
 --- !u!114 &5190391960266167175
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -172,7 +172,7 @@ MonoBehaviour:
   speed: 12
   turnRateDeg: 720
   lifeTime: 5
-  damage: 2
+  damage: 5
   enemyMask:
     serializedVersion: 2
     m_Bits: 0
